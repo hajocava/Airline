@@ -1,17 +1,28 @@
+import { MONTHS } from "./CustomLabels"
+import { DateObject } from "./date.interface"
+
 interface Props {
     placeholder?: string;
-    show: boolean;
+    selectedDate: DateObject | any
     setShow: (show: boolean) => void;
-    formatDate: (placeholder: string | undefined) => string;
-    selectedDay: any
 }
 
-export const ButtonInput = ({ show, setShow, formatDate, placeholder, selectedDay }: Props) => {
+export const ButtonInput = ({ setShow, placeholder, selectedDate }: Props) => {
+
+    const dateToText = (): string => {
+        if (selectedDate) {
+            const { day, month, year } = selectedDate
+            return `${day} de ${MONTHS[month - 1]} ${year}`
+        }
+        else if (placeholder) return placeholder
+        return 'Selecciona una fecha'
+    }
+
     return (
-        <button className="toggle" onClick={() => setShow(!show)}>
+        <button type="button" className="toggle" onClick={() => setShow(true)}>
             <p
-                style={{ color: !!selectedDay ? 'black' : '#9F9F9F' }}
-                children={formatDate(placeholder)}
+                style={{ color: !!selectedDate ? 'black' : '#9F9F9F' }}
+                children={dateToText()}
             />
             <i className="fas fa-calendar-day" />
         </button>

@@ -1,5 +1,6 @@
 import Select from 'react-select'
 import { DatePicker } from '../layout/datePicker/DatePicker'
+import { useFormik } from 'formik';
 
 const DESTINATIONS = [
     { value: 'Francia', label: 'Francia' },
@@ -14,24 +15,43 @@ const DESTINATIONS = [
 ]
 
 export const FormSelectTrip = () => {
+    const formik = useFormik({
+        initialValues: {
+            origin: '',
+            destiny: '',
+            date: ''
+        },
+        onSubmit: values => {
+            console.log(values)
+        },
+    });
+
     return (
         <div className="card-container">
-            <form onSubmit={(event) => {
-                event.preventDefault()
-            }}>
+            <form onSubmit={formik.handleSubmit}>
                 <div className="form-control">
-                    <Select placeholder='Origen' options={DESTINATIONS} />
+                    <Select
+                        placeholder='Origen'
+                        options={DESTINATIONS}
+                        onChange={(value) => formik.setFieldValue('origin', value?.value)}
+                    />
                 </div>
                 <div className="form-control">
-                    <Select placeholder='Destino' options={DESTINATIONS} />
+                    <Select
+                        placeholder='Destino'
+                        options={DESTINATIONS}
+                        onChange={(value) => formik.setFieldValue('destiny', value?.value)}
+                    />
                 </div>
                 <div className="form-control">
                     <input className="form-input" type="text" placeholder="Pasajeros" />
                 </div>
                 <div className="form-control">
-                    <DatePicker />
+                    <DatePicker
+                        onChange={(value) => formik.setFieldValue('date', value)}
+                    />
                 </div>
-                <button className="btn primary w-100 mt-3">Continuar</button>
+                <button type="submit" className="btn primary w-100 mt-3">Continuar</button>
             </form>
         </div>
     )
