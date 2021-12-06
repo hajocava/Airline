@@ -1,16 +1,23 @@
 import { useWizardContext } from "./Wizard"
 
-export const ButtonBack = () => {
+interface Props {
+    text?: string
+    classNames?: string
+    children?: JSX.Element[] | JSX.Element
+}
+
+export const ButtonBack = ({ text = 'Atras', classNames, children }: Props) => {
     const { activePageIndex, goPrevPage } = useWizardContext()
 
     return (
         activePageIndex > 0 ? (
             <button
                 type="button"
-                className="wizard-buttons-left"
+                className={`wizard-buttons-back ${classNames}`}
                 onClick={goPrevPage}
             >
-                Atras
+                {text}
+                {children}
             </button>
         ) : null
     )

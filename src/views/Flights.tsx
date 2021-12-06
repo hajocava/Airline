@@ -13,8 +13,8 @@ export const Flights = () => {
                     <Page2 />
                     <Page3 />
                 </Wizard.Pages>
-                <Wizard.ButtonPrev />
-                <Wizard.ButtonNext />
+                <Wizard.ButtonPrev classNames="btn secondary" />
+                <Wizard.ButtonNext classNames="btn primary" />
             </Wizard>
         </div>
     )

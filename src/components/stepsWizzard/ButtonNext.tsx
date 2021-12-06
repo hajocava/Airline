@@ -1,16 +1,23 @@
 import { useWizardContext } from "./Wizard"
 
-export const ButtonNext = () => {
+interface Props {
+    text?: string
+    classNames?: string
+    children?: JSX.Element[] | JSX.Element
+}
+
+export const ButtonNext = ({ text = 'Siguiente', classNames, children }: Props) => {
     const { activePageIndex, goNextPage, steps } = useWizardContext()
 
     return (
         activePageIndex < steps - 1 ? (
             <button
                 type="button"
-                className="wizard-buttons-left"
+                className={`wizard-buttons-next ${classNames}`}
                 onClick={goNextPage}
             >
-                Siguiente
+                {text}
+                {children}
             </button>
         ) : null
     )
