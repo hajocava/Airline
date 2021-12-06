@@ -1,4 +1,7 @@
-import { Children, createContext, useContext, useEffect, useState } from "react"
+import { createContext, useContext, useState } from "react";
+import { ButtonBack } from "./ButtonBack";
+import { ButtonNext } from "./ButtonNext";
+import { WizardPages } from "./WizardPages";
 
 type AuthContextProps = {
     activePageIndex: number
@@ -8,15 +11,9 @@ type AuthContextProps = {
     goPrevPage: () => void
 }
 
-interface Props extends ChildrenJSX { }
-
-interface ChildrenJSX {
-    children: JSX.Element[] | JSX.Element
-}
-
 const WizardContext = createContext({} as AuthContextProps);
 
-const useWizardContext = () => {
+export const useWizardContext = () => {
     const context = useContext(WizardContext)
     if (!context) {
         throw new Error('El componente no puede ir renderizardo fuera de Wizard.Pages')
@@ -24,60 +21,7 @@ const useWizardContext = () => {
     return context;
 }
 
-const ButtonPrev = () => {
-    const { activePageIndex, goPrevPage } = useContext(WizardContext)
-
-    return (
-        activePageIndex > 0 ? (
-            <button
-                type="button"
-                className="wizard__buttons-left"
-                onClick={goPrevPage}
-            >
-                Atras
-            </button>
-        ) : null
-    )
-}
-
-
-const ButtonNext = () => {
-    const { activePageIndex, goNextPage, steps } = useContext(WizardContext)
-
-    return (
-        activePageIndex < steps - 1 ? (
-            <button
-                type="button"
-                className="wizard__buttons-left"
-                onClick={goNextPage}
-            >
-                Siguiente
-            </button>
-        ) : null
-    )
-}
-
-
-const WizardPages = ({ children }: ChildrenJSX) => {
-    const { activePageIndex, setSteps } = useWizardContext()
-    const pages = Children.toArray(children)
-    const steps = Children.count(children)
-    const currentPage = pages[activePageIndex];
-
-    useEffect(() => {
-        setSteps(steps)
-        // eslint-disable-next-line
-    }, [steps])
-
-    return (
-        <div className="wizard__context">
-            {currentPage}
-        </div>
-    )
-}
-
-
-export const Wizard = ({ children }: Props) => {
+export const Wizard = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
     const [activePageIndex, setactivePageIndex] = useState(0);
     const [steps, setSteps] = useState(0);
 
@@ -87,7 +31,6 @@ export const Wizard = ({ children }: Props) => {
     const goNextPage = () => {
         setactivePageIndex(index => index + 1)
     }
-
 
     return (
         <WizardContext.Provider value={{
@@ -108,4 +51,4 @@ export const Wizard = ({ children }: Props) => {
 
 Wizard.Pages = WizardPages
 Wizard.ButtonNext = ButtonNext
-Wizard.ButtonPrev = ButtonPrev
+Wizard.ButtonPrev = ButtonBack
