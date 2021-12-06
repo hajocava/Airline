@@ -54,17 +54,13 @@ export const Passengers = () => {
                                 type="button"
                                 className="btn secondary"
                                 children="Cancelar"
-                                onClick={() => {
-                                    setShow(false)
-                                }}
+                                onClick={() => { setShow(false) }}
                             />
                             <button
                                 type="button"
                                 className="btn primary"
                                 children="Aplicar"
-                                onClick={() => {
-                                    setShow(false)
-                                }}
+                                onClick={() => { setShow(false) }}
                             />
                         </div>
                     </ModalFooter>

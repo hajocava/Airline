@@ -49,7 +49,10 @@ export const FormSelectTrip = () => {
                     <Passengers />
                 </div>
                 <div className="form-control">
-                    <DatePicker onChange={(value) => formik.setFieldValue('date', value)} />
+                    <DatePicker
+                        placeholder="Fecha de salida"
+                        onChange={(value) => formik.setFieldValue('date', value)}
+                    />
                 </div>
                 <button type="submit" className="btn primary w-100 mt-3">Continuar</button>
             </form>
