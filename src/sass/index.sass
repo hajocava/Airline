@@ -1,10 +1,10 @@
-@import 'vars.sass'
-@import 'mixins.sass'
-
+@import 'grid.sass'
 @import 'vars.sass'
 @import 'mixins.sass'
 @import 'global.sass'
+@import 'margin.sass'
 
+  
 html
   box-sizing: border-box
   margin: 0
@@ -12,8 +12,10 @@ html
   width: 100%
   height: 100vh
 
+
 *, *:after, *:before
   box-sizing: inherit
+
 
 body
   margin: 0
@@ -26,8 +28,13 @@ body
 .card-container
   @extend .card-container
 
+
 .center-element
   @extend .center-element
+
+
+.w-100
+  width: 100%
 
 
 .btn
@@ -37,6 +44,9 @@ body
   height: 39px
   width: 100px
   cursor: pointer
+
+  &.w-100
+    width: 100%
 
   &.primary
     color: white

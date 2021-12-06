@@ -1,0 +1,15 @@
+@import 'vars.sass'
+@import 'mixins.sass'
+@import 'global.sass'
+
+.container
+    margin: 0 auto
+    max-width: 90%
+    @include small
+        max-width: $small
+    @include medium
+        max-width: $medium
+    @include large
+        max-width: $large
+    @include extra
+        max-width: $extra

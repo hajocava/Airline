@@ -13,9 +13,7 @@ const DESTINATIONS = [
     { value: 'India', label: 'India' },
 ]
 
-
 export const FormSelectTrip = () => {
-
     return (
         <div className="card-container">
             <form onSubmit={(event) => {
@@ -33,6 +31,7 @@ export const FormSelectTrip = () => {
                 <div className="form-control">
                     <DatePicker />
                 </div>
+                <button className="btn primary w-100 mt-3">Continuar</button>
             </form>
         </div>
     )
