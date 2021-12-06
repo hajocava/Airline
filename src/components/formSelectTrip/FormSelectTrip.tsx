@@ -1,6 +1,7 @@
 import Select from 'react-select'
 import { DatePicker } from '../layout/datePicker/DatePicker'
 import { useFormik } from 'formik';
+import { Passengers } from '../passangers/Passengers';
 
 const DESTINATIONS = [
     { value: 'Francia', label: 'Francia' },
@@ -19,7 +20,8 @@ export const FormSelectTrip = () => {
         initialValues: {
             origin: '',
             destiny: '',
-            date: ''
+            passangers: {},
+            date: '',
         },
         onSubmit: values => {
             console.log(values)
@@ -44,12 +46,10 @@ export const FormSelectTrip = () => {
                     />
                 </div>
                 <div className="form-control">
-                    <input className="form-input" type="text" placeholder="Pasajeros" />
+                    <Passengers />
                 </div>
                 <div className="form-control">
-                    <DatePicker
-                        onChange={(value) => formik.setFieldValue('date', value)}
-                    />
+                    <DatePicker onChange={(value) => formik.setFieldValue('date', value)} />
                 </div>
                 <button type="submit" className="btn primary w-100 mt-3">Continuar</button>
             </form>

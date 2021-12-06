@@ -1,11 +1,15 @@
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import { Navbar } from "./components/navbarBottom/Navbar";
 import { Home } from "./views/Home";
+import { MyTickets } from "./views/MyTickets";
+import { ShoppingCart } from "./views/ShoppingCart";
 
 export const Router = () => (
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<Home />} />
+            <Route index element={<Home />} />
+            <Route path="/boletos" element={<MyTickets />} />
+            <Route path="/carrito" element={<ShoppingCart />} />
         </Routes>
         <Navbar />
     </BrowserRouter>

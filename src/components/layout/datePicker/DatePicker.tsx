@@ -1,11 +1,11 @@
 
-import { useState } from 'react';
 import { Modal, ModalBody } from '../modal/Modal'
 import { CustomLabels } from './CustomLabels';
-import { ButtonInput } from './ButtonInput';
+import { ButtonInput } from '../ButtonInput';
 import { Footer } from './Footer';
 import { Calendar } from "react-modern-calendar-datepicker";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import { useDatePicker } from './useDatePicker';
 
 interface Props {
     placeholder?: string;
@@ -13,15 +13,15 @@ interface Props {
 }
 
 export const DatePicker = ({ placeholder, onChange }: Props) => {
-    const [show, setShow] = useState(false)
-    const [selectedDate, setSelectedDate] = useState<any>(null);
+    const { show, setShow, selectedDate, setSelectedDate, dateToText } = useDatePicker()
 
     return (
         <div className='modal-date-picker'>
             <ButtonInput
+                iconClass="fas fa-calendar-day"
                 setShow={setShow}
-                selectedDate={selectedDate}
-                placeholder={placeholder}
+                value={dateToText()}
+                placeholder={placeholder || "Selecciona una fecha"}
             />
             <Modal show={show} setShow={setShow} showCloseButton={false} size='sm'>
                 <ModalBody>
