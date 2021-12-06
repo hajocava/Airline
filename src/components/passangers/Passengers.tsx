@@ -1,16 +1,20 @@
 import { ButtonInput } from "../layout/ButtonInput"
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "../layout/modal/Modal"
 import { Passanger } from "./Passanger"
-import { usePassangers } from "./usePassangers"
+import { PassangersInterface, usePassangers } from "./usePassangers"
 
-export const Passengers = () => {
-    const { show, setShow, passangers, handlePassanger } = usePassangers()
+interface Props {
+    onChange: (passangers: PassangersInterface) => void
+}
+
+export const Passengers = ({ onChange }: Props) => {
+    const { show, setShow, passangers, handlePassanger, passangersToText } = usePassangers()
 
     return (
         <div className="passangers">
             <ButtonInput
                 setShow={setShow}
-                value={''}
+                value={passangersToText()}
                 placeholder="Pasajeros"
             />
             <Modal show={show} setShow={setShow} size='sm' showCloseButton={false}>
@@ -60,7 +64,10 @@ export const Passengers = () => {
                                 type="button"
                                 className="btn primary"
                                 children="Aplicar"
-                                onClick={() => { setShow(false) }}
+                                onClick={() => {
+                                    onChange(passangers)
+                                    setShow(false) 
+                                }}
                             />
                         </div>
                     </ModalFooter>

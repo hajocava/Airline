@@ -46,7 +46,7 @@ export const FormSelectTrip = () => {
                     />
                 </div>
                 <div className="form-control">
-                    <Passengers />
+                    <Passengers onChange={(passangers) => formik.setFieldValue('passangers', passangers)} />
                 </div>
                 <div className="form-control">
                     <DatePicker
