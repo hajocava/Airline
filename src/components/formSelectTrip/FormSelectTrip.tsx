@@ -2,6 +2,7 @@ import Select from 'react-select'
 import { DatePicker } from '../layout/datePicker/DatePicker'
 import { useFormik } from 'formik';
 import { Passengers } from '../passangers/Passengers';
+import { useNavigate } from 'react-router';
 
 const DESTINATIONS = [
     { value: 'Francia', label: 'Francia' },
@@ -16,6 +17,8 @@ const DESTINATIONS = [
 ]
 
 export const FormSelectTrip = () => {
+    const navigate = useNavigate()
+    
     const formik = useFormik({
         initialValues: {
             origin: '',
@@ -25,6 +28,7 @@ export const FormSelectTrip = () => {
         },
         onSubmit: values => {
             console.log(values)
+            navigate('/vuelos')
         },
     });
 

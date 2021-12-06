@@ -1,0 +1,102 @@
+@import '../../sass/vars.sass'
+@import '../../sass/mixins.sass'
+@import '../../sass/global.sass'
+
+.ticket
+    border: 2px solid $primary
+    border-radius: 10px
+    background-color: white
+    position: relative
+    &::before
+        position: absolute
+        display: block
+        content: ''
+        height: 90%
+        width: 80%
+        background-color: red
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
+        z-index: -1
+        -webkit-box-shadow: 0px 3px 20px 0px rgba(0,0,0,0.80);
+        -moz-box-shadow: 0px 3px 20px 0px rgba(0,0,0,0.80);
+        box-shadow: 0px 3px 20px 0px rgba(0,0,0,0.80);
+
+    span.separator-ticket
+        position: absolute
+        display: block
+        content: ''
+        height: 20px
+        width: 20px
+        border-radius: 50%
+        background-color: $page
+        border: 2px solid $page
+        
+        &.left
+            left: -11px
+            border-top-color: $primary
+            border-left-color: $primary
+            transform: rotate(135deg)
+
+        &.right
+            right: -11px
+            border-top-color: $primary
+            border-right-color: $primary
+            transform: rotate(-135deg)
+            
+
+    .flight
+        padding: 20px 20px 10px
+        display: flex
+        justify-content: space-between
+        align-items: center
+                
+        .flight-hour
+            text-align: center
+
+            h3, p
+                margin: 0
+            
+            h3
+                font-weight: bold
+
+            p
+                font-size: 14px
+                color: #818181
+        
+        .flight-duration
+            div
+                display: flex
+                justify-content: space-between
+                align-items: center
+
+                span.line
+                    display: block
+                    height: 2px
+                    min-width: 50px
+                    max-width: 100px
+                    background-color: #818181
+                
+                i
+                    margin: 0 10px
+
+            p
+                text-align: center
+                margin: 0
+                color: #818181
+                font-size: 14px
+                margin-top: 5px
+
+    .flight-detail
+        padding: 20px 20px 20px
+        margin-top: 10px
+        display: flex
+        justify-content: space-between
+        
+        p
+            margin: 0
+            font-size: 12px
+        
+        p.price
+            color: $primary
+            font-weight: bold
