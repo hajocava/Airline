@@ -19,12 +19,34 @@ export const ButtonInput = ({ setShow, placeholder, selectedDate }: Props) => {
     }
 
     return (
-        <button type="button" className="toggle" onClick={() => setShow(true)}>
+        <button
+            type="button"
+            className="toggle"
+            onClick={() => setShow(true)}
+            style={{
+                fontSize: 16,
+                backgroundColor: 'white',
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                height: 39,
+                padding: '0 10px',
+                border: '1px solid #CCCCCC',
+                borderRadius: 5,
+                cursor: 'pointer'
+            }}
+        >
             <p
                 style={{ color: !!selectedDate ? 'black' : '#9F9F9F' }}
                 children={dateToText()}
             />
-            <i className="fas fa-calendar-day" />
+            <i
+                className="fas fa-calendar-day"
+                style={{
+                    color: '#a7a7a7'
+                }}
+            />
         </button>
     )
 }

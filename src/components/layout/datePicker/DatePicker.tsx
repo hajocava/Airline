@@ -6,7 +6,6 @@ import { ButtonInput } from './ButtonInput';
 import { Footer } from './Footer';
 import { Calendar } from "react-modern-calendar-datepicker";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
-import "./styles.sass"
 
 interface Props {
     placeholder?: string;
