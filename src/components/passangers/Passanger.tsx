@@ -16,7 +16,7 @@ export const Passanger = ({ label, mutedLabel, classIcon, value, type, handlePas
             <div className="passanger-container">
                 <i className={classIcon}></i>
                 <div>
-                    <h4>{label}</h4>
+                    <h5>{label}</h5>
                     <p>{mutedLabel}</p>
                 </div>
             </div>
