@@ -14,14 +14,27 @@
 
     /* Modal Content */
     .modal-content
+        @extend .card-container
         position: relative
         padding: 0
         max-width: 90%
         margin: 20% auto;
         animation-name: animatetop
         animation-duration: 0.4s
-        @extend .card-container
         background-color: white
+
+        &.sm
+            @include small
+                max-width: 40%
+        &.md
+            @include small
+                max-width: 60%
+        &.lg
+            @include small
+                max-width: 80%
+        &.xl
+            @include small
+                max-width: 90%
 
         /* The Close Button */
         .close

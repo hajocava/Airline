@@ -1,6 +1,7 @@
 import './styles.sass'
 
 interface Props extends JSXProp {
+    size?: 'sm' | 'md' | 'lg' | 'xl'
     showCloseButton: boolean;
     show: boolean;
     setShow: (show: boolean) => void;
@@ -34,10 +35,10 @@ export const ModalFooter = ({ children }: JSXProp) => {
     )
 }
 
-export const Modal = ({ children, show, setShow, showCloseButton }: Props) => {
+export const Modal = ({ children, show, setShow, showCloseButton, size='md' }: Props) => {
     return (
-        <div className="modal" style={{ display: show ? 'block' : 'none' }}>
-            <div className="modal-content">
+        <div className='modal' style={{ display: show ? 'block' : 'none' }}>
+            <div className={`modal-content ${size}`}>
                 {
                     showCloseButton && (
                         <span className="close" onClick={() => setShow(false)}>

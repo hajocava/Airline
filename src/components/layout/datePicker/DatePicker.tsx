@@ -17,38 +17,43 @@ export const DatePicker = () => {
                 onClick={() => setShow(!show)}
                 children="show modal"
             />
-            <Modal show={show} setShow={setShow} showCloseButton={false}>
+            <Modal show={show} setShow={setShow} showCloseButton={false} size='sm'>
                 <ModalBody>
-                    <Calendar
-                        value={selectedDay}
-                        onChange={setSelectedDay}
-                        locale={CustomLabels}
-                        colorPrimary="#B22561"
-                        renderFooter={() => (
-                            <div style={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                margin: '0 20px 20px'
-                            }}>
-                                <button
-                                    className="btn secondary"
-                                    children="Cancelar"
-                                    onClick={() => {
-                                        setSelectedDay(null)
-                                        setShow(false)
-                                    }}
-                                />
-                                <button
-                                    className="btn primary"
-                                    children="Aplicar"
-                                    disabled={!selectedDay}
-                                    onClick={() => {
-                                        setShow(false)
-                                    }}
-                                />
-                            </div>
-                        )}
-                    />
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center'
+                    }}>
+                        <Calendar
+                            value={selectedDay}
+                            onChange={setSelectedDay}
+                            locale={CustomLabels}
+                            colorPrimary="#B22561"
+                            renderFooter={() => (
+                                <div style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    margin: '0 20px 20px'
+                                }}>
+                                    <button
+                                        className="btn secondary"
+                                        children="Cancelar"
+                                        onClick={() => {
+                                            setSelectedDay(null)
+                                            setShow(false)
+                                        }}
+                                    />
+                                    <button
+                                        className="btn primary"
+                                        children="Aplicar"
+                                        disabled={!selectedDay}
+                                        onClick={() => {
+                                            setShow(false)
+                                        }}
+                                    />
+                                </div>
+                            )}
+                        />
+                    </div>
                 </ModalBody>
             </Modal>
         </div>
