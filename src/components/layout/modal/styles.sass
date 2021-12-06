@@ -1,0 +1,52 @@
+@import '../../../sass/vars.sass'
+@import '../../../sass/mixins.sass'
+@import '../../../sass/global.sass'
+
+.modal
+    position: fixed
+    z-index: 9999
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    overflow: auto
+    background-color: rgba(0,0,0,0.4)
+
+    /* Modal Content */
+    .modal-content
+        position: relative
+        padding: 0
+        max-width: 90%
+        margin: 20% auto;
+        animation-name: animatetop
+        animation-duration: 0.4s
+        @extend .card-container
+        background-color: white
+
+        /* The Close Button */
+        .close
+            position: absolute
+            top: 0
+            right: 10px
+            color: #aaa
+            float: right
+            font-size: 28px
+            font-weight: bold
+
+            &:hover,&:focus
+                color: black
+                text-decoration: none
+                cursor: pointer
+
+        .modal-header
+            padding: 2px 10px
+
+        .modal-body
+
+        .modal-footer
+            padding: 2px 10px
+
+/* Add Animation */
+@keyframes animatetop
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}

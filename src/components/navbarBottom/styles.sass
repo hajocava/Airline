@@ -1,0 +1,32 @@
+@import '../../sass/vars.sass'
+@import '../../sass/mixins.sass'
+@import '../../sass/global.sass'
+
+.navbar
+    position: absolute
+    bottom: 0
+    height: 60px
+    width: 100vw
+    background-color: white
+    @extend .center-element
+
+    // shadow
+    -webkit-box-shadow: 0px -3px 6px 0px rgba(114,114,114,0.1);
+    -moz-box-shadow: 0px -3px 6px 0px rgba(114,114,114,0.1);
+    box-shadow: 0px -3px 6px 0px rgba(114,114,114,0.1);
+
+    .icons-container
+        width: 200px
+        display: flex
+        justify-content: space-between
+        a
+            display: flex
+            align-items: center
+            text-decoration: none
+            i
+                color: #A7A7A7
+                font-size: 24px
+            &.active i
+                color: $primary
+                font-size: 28px
+ 

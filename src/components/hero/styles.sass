@@ -1,0 +1,29 @@
+@import '../../sass/vars.sass'
+@import '../../sass/mixins.sass'
+
+.hero
+    background-image: url('../../assets/img/sky.jpg')
+    height: 70vh
+    width: auto
+    position: relative
+    background-repeat: no-repeat
+    background-size: cover
+    &::after
+        z-index: 1
+        content: ''
+        position: absolute
+        height: 70vh
+        width: 100%
+        background: rgba(0,0,0,0.31);
+        background: -moz-linear-gradient(top, rgba(0,0,0,0.31) 0%, rgba(139,139,139,0.23) 58%, $page 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,0.31)), color-stop(58%, rgba(139,139,139,0.23)), color-stop(100%, $page));
+        background: -webkit-linear-gradient(top, rgba(0,0,0,0.31) 0%, rgba(139,139,139,0.23) 58%, $page 100%);
+        background: -o-linear-gradient(top, rgba(0,0,0,0.31) 0%, rgba(139,139,139,0.23) 58%, $page 100%);
+        background: -ms-linear-gradient(top, rgba(0,0,0,0.31) 0%, rgba(139,139,139,0.23) 58%, $page 100%);
+        background: linear-gradient(to bottom, rgba(0,0,0,0.31) 0%, rgba(139,139,139,0.23) 58%, $page 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff', GradientType=0 );
+    .content
+        z-index: 2
+        position: absolute
+        width: 100%
+        height: 100%
