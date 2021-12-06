@@ -4,7 +4,7 @@ import { Passanger } from "./Passanger"
 import { usePassangers } from "./usePassangers"
 
 export const Passengers = () => {
-    const { show, setShow } = usePassangers()
+    const { show, setShow, passangers, handlePassanger } = usePassangers()
 
     return (
         <div className="passangers">
@@ -20,22 +20,28 @@ export const Passengers = () => {
                     </ModalHeader>
                     <ModalBody>
                         <Passanger
+                            type='adults'
                             label='Adultos'
                             mutedLabel='Mayores de 12 años'
                             classIcon='fas fa-male'
-                            value={1}
+                            value={passangers.adults}
+                            handlePassanger={handlePassanger}
                         />
                         <Passanger
+                            type='kids'
                             label='Niños'
                             mutedLabel='5 a 12 años'
                             classIcon='fas fa-child'
-                            value={1}
+                            value={passangers.kids}
+                            handlePassanger={handlePassanger}
                         />
                         <Passanger
+                            type='babies'
                             label='Bebes'
                             mutedLabel='Menores de 5 años'
                             classIcon='fas fa-baby'
-                            value={1}
+                            value={passangers.babies}
+                            handlePassanger={handlePassanger}
                         />
                     </ModalBody>
                     <ModalFooter>

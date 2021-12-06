@@ -1,13 +1,16 @@
 import './styles.sass'
+import { PassangerType } from './usePassangers'
 
 interface Props {
     label: string;
     mutedLabel: string;
     classIcon: string;
-    value: number
+    value: number;
+    type: PassangerType
+    handlePassanger: (value: number, type: PassangerType) => void
 }
 
-export const Passanger = ({ label, mutedLabel, classIcon, value }: Props) => {
+export const Passanger = ({ label, mutedLabel, classIcon, value, type, handlePassanger }: Props) => {
     return (
         <div className="passanger">
             <div className="passanger-container">
@@ -18,9 +21,19 @@ export const Passanger = ({ label, mutedLabel, classIcon, value }: Props) => {
                 </div>
             </div>
             <div className="buttons">
-                <button type="button" className="substract" children='-' />
-                <label>{value}</label>
-                <button type="button" className="plus" children='+' />
+                <button
+                    onClick={() => handlePassanger(value - 1, type)}
+                    type="button"
+                    className="substract"
+                    children='-'
+                />
+                <label children={value} />
+                <button
+                    onClick={() => handlePassanger(value + 1, type)}
+                    type="button"
+                    className="plus"
+                    children='+'
+                />
             </div>
         </div >
     )
