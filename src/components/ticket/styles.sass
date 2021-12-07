@@ -1,0 +1,57 @@
+@import '../../sass/vars.sass'
+@import '../../sass/mixins.sass'
+@import '../../sass/global.sass'
+
+.ticket
+    border: 2px solid $primary
+    border-radius: 10px
+    background-color: white
+    position: relative
+    cursor: pointer
+    padding: 15px 20px
+
+    // shadow background
+    &::before
+        position: absolute
+        display: block
+        content: ''
+        height: 90%
+        width: 80%
+        background-color: red
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
+        z-index: -1
+        -webkit-box-shadow: 0px 3px 20px 0px rgba(0,0,0,0.80)
+        -moz-box-shadow: 0px 3px 20px 0px rgba(0,0,0,0.80)
+        box-shadow: 0px 3px 20px 0px rgba(0,0,0,0.80)
+
+    .ticket-header
+        margin-bottom: 5px
+
+    .ticket-footer
+        margin-top: 10px
+
+    .separator-ticket-container
+        display: flex
+        justify-content: space-between
+        span.separator-ticket
+            display: block
+            content: ''
+            height: 20px
+            width: 20px
+            border-radius: 50%
+            background-color: $page
+            border: 2px solid $page
+
+            &.left
+                left: -11px
+                border-top-color: $primary
+                border-left-color: $primary
+                transform: translateX(-31px) rotate(135deg)
+
+            &.right
+                right: -11px
+                border-top-color: $primary
+                border-right-color: $primary
+                transform: translateX(31px) rotate(-135deg)

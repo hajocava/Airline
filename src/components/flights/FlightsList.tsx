@@ -1,14 +1,14 @@
-import { Ticket } from "./Ticket"
+import { Flight } from "./Flight"
+import "./styles.sass"
 
-
-export const Tickets = () => {
+export const FlightsList = () => {
     return (
         <div className="container" style={{ paddingBottom: 100 }}>
             <div className="flight mt-4">
                 {
                     FLIGHTS.map((flight, index) => (
                         <div key={index} className="mb-4">
-                            <Ticket flight={flight} />
+                            <Flight flight={flight} />
                         </div>
                     ))
                 }

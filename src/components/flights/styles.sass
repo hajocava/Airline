@@ -1,0 +1,56 @@
+@import '../../sass/vars.sass'
+@import '../../sass/mixins.sass'
+@import '../../sass/global.sass'
+
+.flight-header
+    display: flex
+    justify-content: space-between
+    align-items: center
+            
+    .flight-hour
+        text-align: center
+
+        h3, p
+            margin: 0
+        
+        h3
+            font-weight: bold
+
+        p
+            font-size: 14px
+            color: #818181
+    
+    .flight-duration
+        div
+            display: flex
+            justify-content: space-between
+            align-items: center
+
+            span.line
+                display: block
+                height: 2px
+                min-width: 50px
+                max-width: 100px
+                background-color: #818181
+            
+            i
+                margin: 0 10px
+
+        p
+            text-align: center
+            margin: 0
+            color: #818181
+            font-size: 14px
+            margin-top: 5px
+
+.flight-footer
+    display: flex
+    justify-content: space-between
+    
+    p
+        margin: 0
+        font-size: 14px
+    
+    p.price
+        color: $primary
+        font-weight: bold
