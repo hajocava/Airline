@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router"
 import { Ticket } from "../ticket/Ticket"
 
 export const Resume = () => {
+    const navigate = useNavigate()
+
     return (
         <div className="container" style={{ paddingBottom: 80, marginTop: 20 }}>
             <Ticket>
@@ -53,7 +56,10 @@ export const Resume = () => {
                 </Ticket.Footer>
             </Ticket>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <button className="btn primary mt-4" style={{ width: 180 }}>
+                <button
+                    className="btn primary mt-4" style={{ width: 180 }}
+                    onClick={() => { navigate('/') }}
+                >
                     Agregar al carrito
                 </button>
             </div>
