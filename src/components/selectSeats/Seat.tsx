@@ -6,17 +6,21 @@ interface Props {
     status: 'available' | 'busy' | 'selected'
 }
 
-
 export const Seat = ({ label, status }: Props) => {
-    const { handleSelected } = useContext(SeatContext)
+    const limitPassangers = 2 // Change for context value limitPassangers form
+    const { handleSelected, seatsSelected } = useContext(SeatContext)
     const [selected, setSelected] = useState(false)
 
     const onChange = () => {
-        handleSelected(label)
         if (status !== 'busy') {
+            // Deselect seat
             if (selected) {
+                handleSelected(label)
                 setSelected(false)
-            } else {
+            }
+            // Select seat only if not pass limit passangers
+            else if (seatsSelected.length < limitPassangers){
+                handleSelected(label)
                 setSelected(true)
             }
         }

@@ -23,7 +23,7 @@ export const SeatsContextProvider = ({ children }: { children: JSX.Element | JSX
     return (
         <SeatContext.Provider value={{
             seatsSelected,
-            handleSelected
+            handleSelected,
         }}>
             {children}
         </SeatContext.Provider>
