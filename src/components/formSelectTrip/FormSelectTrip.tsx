@@ -27,7 +27,6 @@ export const FormSelectTrip = () => {
             date: '',
         },
         onSubmit: values => {
-            console.log(values)
             navigate('/vuelos')
         },
     });

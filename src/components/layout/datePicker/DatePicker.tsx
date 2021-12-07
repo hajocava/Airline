@@ -3,9 +3,9 @@ import { Modal, ModalBody } from '../modal/Modal'
 import { CustomLabels } from './CustomLabels';
 import { ButtonInput } from '../ButtonInput';
 import { Footer } from './Footer';
-import { Calendar } from "react-modern-calendar-datepicker";
-import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { useDatePicker } from './useDatePicker';
+import { Calendar } from "@amir04lm26/react-modern-calendar-date-picker"
+import "@amir04lm26/react-modern-calendar-date-picker/lib/DatePicker.css";
 
 interface Props {
     placeholder?: string;
