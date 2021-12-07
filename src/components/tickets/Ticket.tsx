@@ -20,7 +20,7 @@ interface Flight {
 export const Ticket = ({ flight }: Props) => {
     return (
         <div className="ticket">
-            <div className="flight">
+            <div className="ticket-header">
                 <div className="flight-hour">
                     <h3>{flight.originHour}</h3>
                     <p>{flight.originShort}</p>
@@ -42,7 +42,7 @@ export const Ticket = ({ flight }: Props) => {
             <span className="separator-ticket left" />
             <span className="separator-ticket right" />
 
-            <div className="flight-detail">
+            <div className="ticket-footer">
                 <p>Vuelo {flight.flight}</p>
                 <p>
                     {

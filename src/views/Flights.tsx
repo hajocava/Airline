@@ -1,7 +1,7 @@
 import { SelectSeats } from "../components/selectSeats/SelectSeats"
 import { Wizard } from "../components/stepsWizzard/Wizard"
+import { ResumeTicket } from "../components/tickets/ResumeTicket"
 import { Tickets } from "../components/tickets/Tickets"
-
 
 export const Flights = () => {
     return (
@@ -13,6 +13,7 @@ export const Flights = () => {
             <Wizard.Pages>
                 <Tickets />
                 <SelectSeats />
+                <ResumeTicket />
             </Wizard.Pages>
         </Wizard>
     )
