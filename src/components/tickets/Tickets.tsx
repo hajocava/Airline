@@ -3,14 +3,16 @@ import { Ticket } from "./Ticket"
 
 export const Tickets = () => {
     return (
-        <div className="flight mt-4">
-            {
-                FLIGHTS.map((flight, index) => (
-                    <div key={index} className="mb-4">
-                        <Ticket flight={flight} />
-                    </div>
-                ))
-            }
+        <div className="container" style={{ paddingBottom: 100 }}>
+            <div className="flight mt-4">
+                {
+                    FLIGHTS.map((flight, index) => (
+                        <div key={index} className="mb-4">
+                            <Ticket flight={flight} />
+                        </div>
+                    ))
+                }
+            </div>
         </div>
     )
 }

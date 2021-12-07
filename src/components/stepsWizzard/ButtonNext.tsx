@@ -1,4 +1,4 @@
-import { useWizardContext } from "./Wizard"
+import { useWizardContext } from "./WizardContext"
 
 interface Props {
     text?: string

@@ -1,5 +1,5 @@
 import { Children, useEffect } from "react";
-import { useWizardContext } from "./Wizard";
+import { useWizardContext } from "./WizardContext";
 
 export const WizardPages = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
     const { activePageIndex, setSteps } = useWizardContext()

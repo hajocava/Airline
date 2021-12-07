@@ -5,15 +5,15 @@ import { Tickets } from "../components/tickets/Tickets"
 
 export const Flights = () => {
     return (
-        <div className="container" style={{ paddingBottom: 80 }}>
-            <Wizard>
-                <Wizard.Pages>
-                    <Tickets />
-                    <SelectSeats />
-                </Wizard.Pages>
-                <Wizard.ButtonPrev classNames="btn secondary" />
-                <Wizard.ButtonNext classNames="btn primary" />
-            </Wizard>
-        </div>
+        <Wizard>
+            <div className="container mt-4">
+                <Wizard.ButtonPrev />
+                <Wizard.ButtonNext />
+            </div>
+            <Wizard.Pages>
+                <Tickets />
+                <SelectSeats />
+            </Wizard.Pages>
+        </Wizard>
     )
 }
