@@ -12,8 +12,8 @@ export const Plane = () => {
             <div className="body-plane">
                 <div className="seats">
                     {
-                        sectionsA.map((section) => (
-                            <div className="section-plane">
+                        sectionsA.map((section, index) => (
+                            <div key={index} className="section-plane">
                                 {section.map(({ label, status }, index) => (
                                     <Seat key={index} label={label} status={status} />
                                 ))}
@@ -23,8 +23,8 @@ export const Plane = () => {
                 </div>
                 <div className="seats">
                     {
-                        sectionsB.map(section => (
-                            <div className="section-plane">
+                        sectionsB.map((section, index) => (
+                            <div key={index} className="section-plane">
                                 {section.map(({ label, status }, index) => (
                                     <Seat key={index} label={label} status={status} />
                                 ))}
@@ -34,8 +34,8 @@ export const Plane = () => {
                 </div>
                 <div className="seats">
                     {
-                        sectionsC.map(section => (
-                            <div className="section-plane">
+                        sectionsC.map((section, index) => (
+                            <div key={index} className="section-plane">
                                 {section.map(({ label, status }, index) => (
                                     <Seat key={index} label={label} status={status} />
                                 ))}

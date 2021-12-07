@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { SeatContext } from "./SeatsContext"
 
 interface Props {
     label: string;
@@ -7,9 +8,11 @@ interface Props {
 
 
 export const Seat = ({ label, status }: Props) => {
+    const { handleSelected } = useContext(SeatContext)
     const [selected, setSelected] = useState(false)
 
-    const handleSelected = () => {
+    const onChange = () => {
+        handleSelected(label)
         if (status !== 'busy') {
             if (selected) {
                 setSelected(false)
@@ -26,7 +29,7 @@ export const Seat = ({ label, status }: Props) => {
                 : selected ? 'selected' 
                 : 'available'}`
             }
-            onClick={handleSelected}
+            onClick={onChange}
         >
             <p>{label}</p>
         </div>
