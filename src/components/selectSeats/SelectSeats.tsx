@@ -1,17 +1,31 @@
 import { useContext } from "react"
+import { ButtonNext } from "../stepsWizzard/ButtonNext"
 import { Plane } from "./Plane"
 import { SeatContext, SeatsContextProvider } from "./SeatsContext"
 import { TypeSeat } from "./TypeSeat"
 
+
 const TotalSelected = () => {
     const { seatsSelected } = useContext(SeatContext)
+
     return <p style={{ margin: 0 }}>{seatsSelected.length} de {2}</p>
+}
+
+const ContinueButton = () => {
+    const { seatsSelected } = useContext(SeatContext)
+
+    return (
+        <ButtonNext
+            classNames="wizard-btn-continue btn primary"
+            disabled={seatsSelected.length < 2}
+        />
+    )
 }
 
 export const SelectSeats = () => {
     return (
         <SeatsContextProvider>
-            <div style={{ paddingBottom: 100, marginTop: 20 }}>
+            <div style={{ paddingBottom: 120, marginTop: 20 }}>
                 <div className="container" style={{ display: 'flex', justifyContent: 'space-between' }} >
                     <h3 style={{ margin: 0 }}>Elige tus asientos</h3>
                     <TotalSelected />
@@ -30,6 +44,7 @@ export const SelectSeats = () => {
                     <Plane />
                 </div>
             </div>
+            <ContinueButton />
         </SeatsContextProvider>
     )
 }

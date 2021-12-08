@@ -9,6 +9,7 @@ interface Props {
 
 export const Passengers = ({ onChange }: Props) => {
     const { show, setShow, passangers, handlePassanger, passangersToText } = usePassangers()
+    const { adults, kids, babies } = passangers
 
     return (
         <div className="passangers">
@@ -28,7 +29,7 @@ export const Passengers = ({ onChange }: Props) => {
                             label='Adultos'
                             mutedLabel='Mayores de 12 años'
                             classIcon='fas fa-male'
-                            value={passangers.adults}
+                            value={adults}
                             handlePassanger={handlePassanger}
                         />
                         <Passanger
@@ -36,7 +37,7 @@ export const Passengers = ({ onChange }: Props) => {
                             label='Niños'
                             mutedLabel='5 a 12 años'
                             classIcon='fas fa-child'
-                            value={passangers.kids}
+                            value={kids}
                             handlePassanger={handlePassanger}
                         />
                         <Passanger
@@ -44,7 +45,7 @@ export const Passengers = ({ onChange }: Props) => {
                             label='Bebes'
                             mutedLabel='Menores de 5 años'
                             classIcon='fas fa-baby'
-                            value={passangers.babies}
+                            value={babies}
                             handlePassanger={handlePassanger}
                         />
                     </ModalBody>
@@ -64,9 +65,10 @@ export const Passengers = ({ onChange }: Props) => {
                                 type="button"
                                 className="btn primary"
                                 children="Aplicar"
+                                disabled={adults === 0 && kids === 0 && babies === 0}
                                 onClick={() => {
                                     onChange(passangers)
-                                    setShow(false) 
+                                    setShow(false)
                                 }}
                             />
                         </div>

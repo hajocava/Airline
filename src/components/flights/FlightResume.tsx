@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router"
 import { Ticket } from "../ticket/Ticket"
 
-export const Resume = () => {
+export const FlightResume = () => {
     const navigate = useNavigate()
 
     return (
-        <div className="container" style={{ paddingBottom: 80, marginTop: 20 }}>
+        <div className="container" style={{ paddingBottom: 80 }}>
+            <h2 className="mb-0">Resumen</h2>
+            <p className="mt-1 mb-4">Revisa que todos los datos esten bien</p>
             <Ticket>
                 <Ticket.Header>
                     <div className="field-value">
@@ -60,7 +62,7 @@ export const Resume = () => {
                     className="btn primary mt-4" style={{ width: 180 }}
                     onClick={() => { navigate('/') }}
                 >
-                    Agregar al carrito
+                    Reservar
                 </button>
             </div>
         </div>

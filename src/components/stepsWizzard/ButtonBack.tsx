@@ -1,12 +1,12 @@
+import { CSSProperties } from "react"
 import { useWizardContext } from "./WizardContext"
 
 interface Props {
-    text?: string
-    classNames?: string
-    children?: JSX.Element[] | JSX.Element
+    classNames?: string;
+    style?: CSSProperties;
 }
 
-export const ButtonBack = ({ text = 'Atras', classNames, children }: Props) => {
+export const ButtonBack = ({ classNames, style }: Props) => {
     const { activePageIndex, goPrevPage } = useWizardContext()
 
     return (
@@ -15,9 +15,12 @@ export const ButtonBack = ({ text = 'Atras', classNames, children }: Props) => {
                 type="button"
                 className={`wizard-buttons-back ${classNames}`}
                 onClick={goPrevPage}
+                style={{
+                    ...style,
+                    cursor: 'pointer'
+                }}
             >
-                {text}
-                {children}
+                <i className="fas fa-chevron-left"></i>
             </button>
         ) : null
     )

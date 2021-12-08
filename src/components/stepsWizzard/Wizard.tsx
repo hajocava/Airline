@@ -17,5 +17,5 @@ export const Wizard = ({ children }: { children: JSX.Element | JSX.Element[] }) 
 }
 
 Wizard.Pages = WizardPages
+Wizard.ButtonBack = ButtonBack
 Wizard.ButtonNext = ButtonNext
-Wizard.ButtonPrev = ButtonBack

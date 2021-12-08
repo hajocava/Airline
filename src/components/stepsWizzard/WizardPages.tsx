@@ -1,7 +1,12 @@
-import { Children, useEffect } from "react";
+import { Children, CSSProperties, useEffect } from "react";
 import { useWizardContext } from "./WizardContext";
 
-export const WizardPages = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
+interface Props {
+    style?: CSSProperties
+    children: JSX.Element | JSX.Element[]
+}
+
+export const WizardPages = ({ children, style = {} }: Props) => {
     const { activePageIndex, setSteps } = useWizardContext()
     const pages = Children.toArray(children)
     const steps = Children.count(children)
@@ -11,7 +16,7 @@ export const WizardPages = ({ children }: { children: JSX.Element | JSX.Element[
     useEffect(() => { setSteps(steps) }, [steps])
 
     return (
-        <div className="wizard-context">
+        <div className="wizard-context" style={style}>
             {currentPage}
         </div>
     )
