@@ -4,7 +4,6 @@
 @import 'global.sass'
 @import 'marginPadding.sass'
 
-  
 html
   box-sizing: border-box
   margin: 0
@@ -12,10 +11,8 @@ html
   width: 100%
   height: 100vh
 
-
 *, *:after, *:before
   box-sizing: inherit
-
 
 body
   margin: 0
@@ -28,14 +25,11 @@ body
 .card-container
   @extend .card-container
 
-
 .center-element
   @extend .center-element
 
-
 .w-100
   width: 100%
-
 
 .color-primary
   color: $primary
@@ -46,7 +40,6 @@ body
 .text-center
   text-align: center
 
-
 .btn
   background-color: transparent
   border: none
@@ -54,6 +47,7 @@ body
   height: 37px
   width: 120px
   cursor: pointer
+  border-radius: 5px
 
   &.w-100
     width: 100%
@@ -61,7 +55,6 @@ body
   &.primary
     color: white
     background-color: $primary
-    border-radius: 40px
 
   &.secondary
     color: $primary
@@ -72,6 +65,11 @@ body
       opacity: 65%
       transition: all .3s ease-in-out
 
+  @include medium
+    &:hover
+      background-color: darken($primary, 3%)
+    &:active
+      background-color: darken($primary, 8%)
 
 form
   .form-control

@@ -3,7 +3,7 @@ import { Navbar } from "./components/navbar/Navbar";
 import { Flights } from "./views/Flights";
 import { Home } from "./views/Home";
 import { MyTickets } from "./views/MyTickets";
-import { ShoppingCart } from "./views/ShoppingCart";
+import { ShoppingCart } from "./components/Shopping/ShoppingCart";
 
 export const Router = () => (
     <BrowserRouter>

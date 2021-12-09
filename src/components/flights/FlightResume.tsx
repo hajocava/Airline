@@ -14,11 +14,11 @@ export const FlightResume = () => {
 
     const saveReserve = () => {
         saveItem([...item, { 
-            origin, 
-            destiny, 
-            passangers, 
-            date, 
-            seats, 
+            origin,
+            destiny,
+            passangers,
+            date,
+            seats,
             flight: {
                 ...flight,
                 id: uniqid()

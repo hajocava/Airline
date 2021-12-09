@@ -1,7 +1,7 @@
-import { usePassangers } from "../components/passangers/usePassangers"
-import { EmptyShopping } from "../components/Shopping/EmptyShopping"
-import { useLocalStorage } from "../hooks/useLocalStorage"
-import { FlightState } from "../redux/reducers/flightReducer"
+import { usePassangers } from "../passangers/usePassangers"
+import { EmptyShopping } from "./EmptyShopping"
+import { useLocalStorage } from "../../hooks/useLocalStorage"
+import { FlightState } from "../../redux/reducers/flightReducer"
 
 export const ShoppingCart = () => {
     const { saveItem } = useLocalStorage('tickets', [])
@@ -10,18 +10,31 @@ export const ShoppingCart = () => {
 
     const deleteFlightFromLocalStorage = (id: number) => {
         const newFlights = item.filter((element: FlightState) => element.flight!.id !== id)
-        
+
         saveItem(newFlights)
         setItem(newFlights)
+    }
+
+    const calcTotal = (): number => {
+        let total = 0
+        item.forEach((value: FlightState) => {
+            total += value.flight!.price
+        })
+
+        return total
     }
 
     if (item.length === 0) return <EmptyShopping />
 
     return (
         <div className="container" style={{ paddingBottom: 100 }}>
-            <h1 className="mb-0">Carrito</h1>
-            <p className="mt-2">{item.length} vuelos reservados</p>
-            <div className="mt-5">
+            <div>
+                <h1 className="mb-0">Carrito</h1>
+                <p className="mt-1">Total: <span style={{ fontSize: 22 }} className="color-primary bold">${calcTotal()} MXN</span></p>
+                <button className="btn primary w-100">Pagar</button>
+            </div>
+            <p className="mt-5">{item.length} vuelos reservados</p>
+            <div className="mt-2">
                 {
                     item.map((value: FlightState, index) => (
                         <div key={index} className="card-container mb-4">
