@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 export const useLocalStorage = <T extends Object>(itemName: string, initialValue: T) => {
     const [error, setError] = useState(false)
     const [item, setItem] = useState(initialValue)
+    const [sinronizedItem, setSinronizedItem] = useState(true)
 
     useEffect(() => {
         try {
@@ -17,13 +18,15 @@ export const useLocalStorage = <T extends Object>(itemName: string, initialValue
             }
 
             setItem(parsedItem)
+            setSinronizedItem(true)
 
         } catch (error) {
             console.log(error)
             setError(true)
         }
 
-    }, [])
+        // eslint-disable-next-line
+    }, [sinronizedItem])
 
     const saveItem = (newItem: any) => {
         try {
@@ -36,9 +39,14 @@ export const useLocalStorage = <T extends Object>(itemName: string, initialValue
         }
     }
 
+    const sincronize = () => {
+        setSinronizedItem(false)
+    }
+
     return {
         error,
         item,
-        saveItem
+        saveItem,
+        sincronize
     }
 }
