@@ -4,8 +4,8 @@ import { useFormik } from 'formik';
 import { Passengers } from '../passangers/Passengers';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
-import * as Yup from "yup";
 import { FormikFieldError } from '../layout/FormikFieldError';
+import * as Yup from "yup";
 
 const DESTINATIONS = [
     { value: 'Francia', label: 'Francia' },

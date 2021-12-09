@@ -19,6 +19,7 @@ export const FlightsList = () => {
 
 const FLIGHTS = [
     {
+        id: 1,
         origin: 'New York',
         originShort: 'NY',
         originHour: '10:30',
@@ -31,6 +32,7 @@ const FLIGHTS = [
         price: 500,
     },
     {
+        id: 2,
         origin: 'New York',
         originShort: 'NY',
         originHour: '11:25',
@@ -43,6 +45,7 @@ const FLIGHTS = [
         price: 4200,
     },
     {
+        id: 3,
         origin: 'New York',
         originShort: 'NY',
         originHour: '07:00',
@@ -55,6 +58,7 @@ const FLIGHTS = [
         price: 3100,
     },
     {
+        id: 4,
         origin: 'New York',
         originShort: 'NY',
         originHour: '07:00',
@@ -67,6 +71,7 @@ const FLIGHTS = [
         price: 3100,
     },
     {
+        id: 5,
         origin: 'New York',
         originShort: 'NY',
         originHour: '07:00',
@@ -79,6 +84,7 @@ const FLIGHTS = [
         price: 3100,
     },
     {
+        id: 6,
         origin: 'New York',
         originShort: 'NY',
         originHour: '07:00',

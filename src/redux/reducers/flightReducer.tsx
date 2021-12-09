@@ -1,16 +1,16 @@
 import { PassangersInterface } from "../../components/passangers/usePassangers"
 
 
-interface FlightState extends FormTrip, FlightID, Seats { }
+export interface FlightState extends FormTrip, FlightID, Seats { }
 
 interface FormTrip {
     origin: string;
     destiny: string;
-    date: string;
+    date: Date | null;
     passangers: PassangersInterface;
 }
 
-interface FlightID { flightID: string; }
+interface FlightID { flightID: number | null; }
 
 interface Seats { seats: Array<string>; }
 
@@ -23,13 +23,13 @@ export type FlightAction =
 const initialState: FlightState = {
     origin: '',
     destiny: '',
-    date: '',
+    date: null,
     passangers: {
         adults: 0,
         kids: 0,
         babies: 0
     },
-    flightID: '',
+    flightID: null,
     seats: [],
 }
 

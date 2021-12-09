@@ -1,5 +1,6 @@
 import { useContext } from "react"
-import { ButtonNext } from "../stepsWizzard/ButtonNext"
+import { useDispatch } from "react-redux"
+import { useWizardContext } from "../stepsWizzard/WizardContext"
 import { Plane } from "./Plane"
 import { SeatContext, SeatsContextProvider } from "./SeatsContext"
 import { TypeSeat } from "./TypeSeat"
@@ -7,17 +8,28 @@ import { TypeSeat } from "./TypeSeat"
 
 const TotalSelected = () => {
     const { seatsSelected } = useContext(SeatContext)
-
     return <p style={{ margin: 0 }}>{seatsSelected.length} de {2}</p>
 }
 
 const ContinueButton = () => {
     const { seatsSelected } = useContext(SeatContext)
+    const { goNextPage } = useWizardContext()
+    const dispatch = useDispatch()
+
+    const saveSeats = () => {
+        dispatch({
+            type: 'SET_SEATS',
+            payload: { seats: seatsSelected }
+        })
+        goNextPage()
+    }
 
     return (
-        <ButtonNext
-            classNames="wizard-btn-continue btn primary"
+        <button
+            onClick={saveSeats}
+            className="wizard-btn-continue btn primary"
             disabled={seatsSelected.length < 2}
+            children="Continuar"
         />
     )
 }

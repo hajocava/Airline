@@ -25,12 +25,12 @@ export const usePassangers = () => {
         }
     }
 
-    const passangersToText = (): string => {
+    const passangersToText = (passangers: PassangersInterface): string => {
         const totalPassangers: Array<string> = []
 
-        if (passangers.adults > 0) totalPassangers.push(`Adultos:${passangers.adults}`)
-        if (passangers.kids > 0) totalPassangers.push(`Niños:${passangers.kids}`)
-        if (passangers.babies > 0) totalPassangers.push(`Bebes:${passangers.babies}`)
+        if (passangers.adults > 0) totalPassangers.push(`Adultos: ${passangers.adults}`)
+        if (passangers.kids > 0) totalPassangers.push(`Niños: ${passangers.kids}`)
+        if (passangers.babies > 0) totalPassangers.push(`Bebes: ${passangers.babies}`)
 
         return totalPassangers.join(', ')
     }

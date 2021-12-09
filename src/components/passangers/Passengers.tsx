@@ -15,7 +15,7 @@ export const Passengers = ({ onChange }: Props) => {
         <div className="passangers">
             <ButtonInput
                 setShow={setShow}
-                value={passangersToText()}
+                value={passangersToText(passangers)}
                 placeholder="Pasajeros"
             />
             <Modal show={show} setShow={setShow} size='sm' showCloseButton={false}>

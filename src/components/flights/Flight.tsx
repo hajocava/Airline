@@ -1,3 +1,4 @@
+import { useDispatch } from "react-redux"
 import { useWizardContext } from "../stepsWizzard/WizardContext"
 import { Ticket } from "../ticket/Ticket"
 
@@ -6,6 +7,7 @@ interface Props {
 }
 
 interface FlightInterface {
+    id: number;
     origin: string;
     originShort: string;
     originHour: string;
@@ -20,8 +22,18 @@ interface FlightInterface {
 
 export const Flight = ({ flight }: Props) => {
     const { goNextPage } = useWizardContext()
+    const dispatch = useDispatch()
+
+    const selectTicket = (flightID: number) => {
+        dispatch({
+            type: 'SET_FLIGHT',
+            payload: { flightID }
+        })
+        goNextPage()
+    }
+
     return (
-        <div onClick={goNextPage}>
+        <div onClick={() => selectTicket(flight.id)}>
             <Ticket>
                 <Ticket.Header>
                     <div className="flight-header">
