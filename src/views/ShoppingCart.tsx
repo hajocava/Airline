@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import { usePassangers } from "../components/passangers/usePassangers"
 import { useLocalStorage } from "../hooks/useLocalStorage"
 import { FlightState } from "../redux/reducers/flightReducer"
@@ -6,27 +5,24 @@ import { FlightState } from "../redux/reducers/flightReducer"
 export const ShoppingCart = () => {
     const { saveItem } = useLocalStorage('tickets', [])
     const { passangersToText } = usePassangers()
-    const { item } = useLocalStorage('tickets', [])
-    const [flights, setFlights] = useState(item)
+    const { item, setItem } = useLocalStorage('tickets', [])
 
     const deleteFlightFromLocalStorage = (id: number) => {
         const newFlights = item.filter((element: FlightState) => element.flight!.id !== id)
+        
         saveItem(newFlights)
-        setFlights(newFlights)
-
+        setItem(newFlights)
     }
 
-    useEffect(() => {
-        setFlights(item)
-    }, [item])
+
 
     return (
         <div className="container" style={{ paddingBottom: 100 }}>
             <h1 className="mb-0">Carrito</h1>
-            <p className="mt-2">{flights.length} vuelos reservados</p>
+            <p className="mt-2">{item.length} vuelos reservados</p>
             <div className="mt-5">
                 {
-                    flights.map((value: FlightState, index) => (
+                    item.map((value: FlightState, index) => (
                         <div key={index} className="card-container mb-4">
                             <div className="field-value">
                                 <label>Origen</label>
@@ -52,9 +48,8 @@ export const ShoppingCart = () => {
                                 <button
                                     onClick={() => deleteFlightFromLocalStorage(value.flight!.id)}
                                     className="btn primary"
-                                >
-                                    Eliminar
-                                </button>
+                                    children="Eliminar"
+                                />
                             </div>
                         </div>
                     ))

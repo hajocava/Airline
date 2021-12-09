@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
+import { useStorageListener } from "./useStorageListener"
 
 export const useLocalStorage = <T extends Object>(itemName: string, initialValue: T) => {
     const [error, setError] = useState(false)
     const [item, setItem] = useState(initialValue)
-    const [sinronizedItem, setSinronizedItem] = useState(true)
+    const { storageChange, setStorageChange } = useStorageListener(itemName)
 
-    useEffect(() => {
+    const updateLocalStorage = () => {
         try {
             const localStorageItem = localStorage.getItem(itemName)
             let parsedItem;
@@ -18,36 +19,35 @@ export const useLocalStorage = <T extends Object>(itemName: string, initialValue
             }
 
             setItem(parsedItem)
-            setSinronizedItem(true)
 
         } catch (error) {
             console.log(error)
             setError(true)
         }
+        setStorageChange(false)
+    }
 
+    useEffect(() => {
+        updateLocalStorage()
         // eslint-disable-next-line
-    }, [sinronizedItem])
+    }, [storageChange])
 
     const saveItem = (newItem: any) => {
         try {
             const stringFieldItem = JSON.stringify(newItem)
             localStorage.setItem(itemName, stringFieldItem)
+            setStorageChange(true)
             setItem(newItem)
-            sincronize()
         } catch (error) {
             console.log(error)
             setError(true)
         }
     }
 
-    const sincronize = () => {
-        setSinronizedItem(false)
-    }
-
     return {
         error,
         item,
+        setItem,
         saveItem,
-        sincronize
     }
 }
