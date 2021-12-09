@@ -14,7 +14,7 @@ interface FlightID { flightID: string; }
 
 interface Seats { seats: Array<string>; }
 
-type FlightAction =
+export type FlightAction =
     | { type: 'SET_FORM', payload: FormTrip }
     | { type: 'SET_FLIGHT', payload: FlightID }
     | { type: 'SET_SEATS', payload: Seats }
@@ -30,10 +30,10 @@ const initialState: FlightState = {
         babies: 0
     },
     flightID: '',
-    seats: []
+    seats: [],
 }
 
-export const flightReducer = (state = initialState, action: FlightAction): FlightState => {
+export const flightReducer = (state: FlightState= initialState, action: FlightAction): FlightState => {
     switch (action.type) {
         case 'SET_FORM':
             return {
