@@ -33,7 +33,6 @@ export const useLocalStorage = <T extends Object>(itemName: string, initialValue
     }, [storageChange])
 
     const saveItem = (newItem: any) => {
-        console.log("entre al saveItem")
         try {
             const stringFieldItem = JSON.stringify(newItem)
             localStorage.setItem(itemName, stringFieldItem)

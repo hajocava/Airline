@@ -1,3 +1,4 @@
+import uniqid from 'uniqid';
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router"
 import { useLocalStorage } from "../../hooks/useLocalStorage"
@@ -12,7 +13,17 @@ export const FlightResume = () => {
     const { origin, destiny, passangers, date, seats, flight }: FlightState = useSelector((state: any) => state.flightReducer)
 
     const saveReserve = () => {
-        saveItem([...item, { origin, destiny, passangers, date, seats, flight }])
+        saveItem([...item, { 
+            origin, 
+            destiny, 
+            passangers, 
+            date, 
+            seats, 
+            flight: {
+                ...flight,
+                id: uniqid()
+            }
+        }])
         navigate('/')
     }
 
