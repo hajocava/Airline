@@ -20,6 +20,19 @@ export interface FlightInterface {
     price: number;
 }
 
+export const FlightDuration = ({ duration }: { duration: string }) => {
+    return (
+        <div className="flight-duration">
+            <div>
+                <span className="line" />
+                <i className="fas fa-plane"></i>
+                <span className="line" />
+            </div>
+            <p>{duration}</p>
+        </div>
+    )
+}
+
 export const Flight = ({ flight }: Props) => {
     const { goNextPage } = useWizardContext()
     const dispatch = useDispatch()
@@ -41,14 +54,7 @@ export const Flight = ({ flight }: Props) => {
                             <h3>{flight.originHour}</h3>
                             <p>{flight.originShort}</p>
                         </div>
-                        <div className="flight-duration">
-                            <div>
-                                <span className="line" />
-                                <i className="fas fa-plane"></i>
-                                <span className="line" />
-                            </div>
-                            <p>{flight.flightDuration}</p>
-                        </div>
+                        <FlightDuration duration={flight.flightDuration} />
                         <div className="flight-hour">
                             <h3>{flight.destinyHour}</h3>
                             <p>{flight.destinyShort}</p>

@@ -2,6 +2,8 @@ import { usePassangers } from "../passangers/usePassangers"
 import { EmptyShopping } from "./EmptyShopping"
 import { useLocalStorage } from "../../hooks/useLocalStorage"
 import { FlightState } from "../../redux/reducers/flightReducer"
+import { Ticket } from "../ticket/Ticket"
+import { FlightDuration } from "../flights/Flight"
 
 export const ShoppingCart = () => {
     const { saveItem } = useLocalStorage('tickets', [])
@@ -37,15 +39,19 @@ export const ShoppingCart = () => {
             <div className="mt-2">
                 {
                     item.map((value: FlightState, index) => (
-                        <div key={index} className="card-container mb-4">
-                            <div className="field-value">
-                                <label>Origen</label>
-                                <p>{value.origin}</p>
+                        <Ticket key={index} classNames="mb-4" style={{ boxShadow: '0px 5px 30px -15px rgba(0,0,0,0.48)' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <div className="field-value">
+                                    <label>Origen</label>
+                                    <p>{value.origin}</p>
+                                </div>
+                                <FlightDuration duration={value.flight!.flightDuration} />
+                                <div className="field-value" style={{ textAlign: 'right' }}>
+                                    <label>Destino</label>
+                                    <p>{value.destiny}</p>
+                                </div>
                             </div>
-                            <div className="field-value">
-                                <label>Destino</label>
-                                <p>{value.destiny}</p>
-                            </div>
+                            <Ticket.Separator />
                             <div className="field-value">
                                 <label>Hora de salida</label>
                                 <p>{value.flight?.originHour}</p>
@@ -54,18 +60,19 @@ export const ShoppingCart = () => {
                                 <label>Pasajeros</label>
                                 <p>{passangersToText(value.passangers)}</p>
                             </div>
-                            <div className="field-value">
-                                <label>Precio</label>
-                                <p className="bold color-primary">${value.flight?.price}</p>
-                            </div>
-                            <div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <div className="field-value">
+                                    <label>Precio</label>
+                                    <p className="bold color-primary">${value.flight?.price}</p>
+                                </div>
                                 <button
                                     onClick={() => deleteFlightFromLocalStorage(value.flight!.id)}
                                     className="btn primary"
                                     children="Eliminar"
+                                    style={{ alignSelf: 'flex-end' }}
                                 />
                             </div>
-                        </div>
+                        </Ticket>
                     ))
                 }
             </div>

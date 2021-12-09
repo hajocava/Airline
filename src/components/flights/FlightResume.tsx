@@ -13,7 +13,7 @@ export const FlightResume = () => {
     const { origin, destiny, passangers, date, seats, flight }: FlightState = useSelector((state: any) => state.flightReducer)
 
     const saveReserve = () => {
-        saveItem([...item, { 
+        saveItem([...item, {
             origin,
             destiny,
             passangers,
@@ -27,10 +27,23 @@ export const FlightResume = () => {
         navigate('/')
     }
 
+    const ButtonReserve = () => (
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <button
+                className="btn primary w-100"
+                onClick={saveReserve}
+                children="Reservar"
+            />
+        </div>
+    )
+
     return (
         <div className="container" style={{ paddingBottom: 80 }}>
             <h2 className="mb-0">Resumen</h2>
             <p className="mt-1 mb-4">Revisa que los datos esten correctos</p>
+            <div className='mt-0 mb-5 w-100'>
+                <ButtonReserve />
+            </div>
             <div className="card-container">
                 <div className="field-value">
                     <label>Origen</label>
@@ -73,12 +86,8 @@ export const FlightResume = () => {
                     <p className="color-primary bold">${flight?.price}</p>
                 </div>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <button
-                    className="btn primary mt-4" style={{ width: 180 }}
-                    onClick={saveReserve}
-                    children="Reservar"
-                />
+            <div className='mt-5 mb-5'>
+                <ButtonReserve />
             </div>
         </div>
     )
