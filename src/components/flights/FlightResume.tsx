@@ -8,12 +8,11 @@ import { usePassangers } from "../passangers/usePassangers"
 export const FlightResume = () => {
     const navigate = useNavigate()
     const { passangersToText } = usePassangers()
-    const { item, saveItem, sincronize } = useLocalStorage('tickets', [])
+    const { item, saveItem } = useLocalStorage('tickets', [])
     const { origin, destiny, passangers, date, seats, flight }: FlightState = useSelector((state: any) => state.flightReducer)
 
     const saveReserve = () => {
         saveItem([...item, { origin, destiny, passangers, date, seats, flight }])
-        sincronize()
         navigate('/')
     }
 

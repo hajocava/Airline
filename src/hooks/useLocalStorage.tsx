@@ -33,6 +33,7 @@ export const useLocalStorage = <T extends Object>(itemName: string, initialValue
             const stringFieldItem = JSON.stringify(newItem)
             localStorage.setItem(itemName, stringFieldItem)
             setItem(newItem)
+            sincronize()
         } catch (error) {
             console.log(error)
             setError(true)

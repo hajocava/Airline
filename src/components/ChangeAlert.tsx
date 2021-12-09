@@ -6,7 +6,6 @@ interface Props {
 }
 
 const ChangeAlert = ({ storageChange, toggleShow }: Props) => {
-    console.log(storageChange)
     if (storageChange) {
         return (
             <div>

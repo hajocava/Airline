@@ -9,11 +9,12 @@ interface Props {
 }
 
 export const Seat = ({ label, status }: Props) => {
-    const limitPassangers = 2 // Change for context value limitPassangers form
 
-    const { seats }: FlightState = useSelector((state: any) => state.flightReducer)
+    const { seats, passangers }: FlightState = useSelector((state: any) => state.flightReducer)
     const { handleSelected, seatsSelected } = useContext(SeatContext)
     const [selected, setSelected] = useState(seats.includes(label))
+
+    const totalPassangers = passangers.adults + passangers.kids + passangers.babies
 
     const onChange = () => {
         if (status !== 'busy') {
@@ -23,7 +24,7 @@ export const Seat = ({ label, status }: Props) => {
                 setSelected(false)
             }
             // Select seat only if not pass limit passangers
-            else if (seatsSelected.length < limitPassangers){
+            else if (seatsSelected.length < totalPassangers){
                 handleSelected(label)
                 setSelected(true)
             }

@@ -1,5 +1,6 @@
 import { useContext } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { FlightState } from "../../redux/reducers/flightReducer"
 import { useWizardContext } from "../stepsWizzard/WizardContext"
 import { Plane } from "./Plane"
 import { SeatContext, SeatsContextProvider } from "./SeatsContext"
@@ -7,14 +8,20 @@ import { TypeSeat } from "./TypeSeat"
 
 
 const TotalSelected = () => {
+    const { passangers }: FlightState = useSelector((state: any) => state.flightReducer)
+    const totalPassangers = passangers.adults + passangers.kids + passangers.babies
+
     const { seatsSelected } = useContext(SeatContext)
-    return <p style={{ margin: 0 }}>{seatsSelected.length} de {2}</p>
+    return <p style={{ margin: 0 }}>{seatsSelected.length} de {totalPassangers}</p>
 }
 
 const ContinueButton = () => {
+    const { passangers }: FlightState = useSelector((state: any) => state.flightReducer)
     const { seatsSelected } = useContext(SeatContext)
     const { goNextPage } = useWizardContext()
     const dispatch = useDispatch()
+
+    const totalPassangers = passangers.adults + passangers.kids + passangers.babies
 
     const saveSeats = () => {
         dispatch({
@@ -28,7 +35,7 @@ const ContinueButton = () => {
         <button
             onClick={saveSeats}
             className="wizard-btn-continue btn primary"
-            disabled={seatsSelected.length < 2}
+            disabled={seatsSelected.length < totalPassangers}
             children="Continuar"
         />
     )

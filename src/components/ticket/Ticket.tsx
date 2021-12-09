@@ -1,4 +1,12 @@
+import { CSSProperties } from 'react'
 import './styles.sass'
+
+interface JSX { children: JSX.Element | JSX.Element[] }
+
+interface Props extends JSX {
+    style?: CSSProperties,
+    classNames?: string
+}
 
 const Separator = () => {
     return (
@@ -9,7 +17,7 @@ const Separator = () => {
     )
 }
 
-const TicketHeader = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
+const TicketHeader = ({ children }: JSX) => {
     return (
         <div className="ticket-header">
             {children}
@@ -17,7 +25,7 @@ const TicketHeader = ({ children }: { children: JSX.Element | JSX.Element[] }) =
     )
 }
 
-const TicketFooter = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
+const TicketFooter = ({ children }: JSX) => {
     return (
         <div className="ticket-footer">
             {children}
@@ -25,9 +33,9 @@ const TicketFooter = ({ children }: { children: JSX.Element | JSX.Element[] }) =
     )
 }
 
-export const Ticket = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
+export const Ticket = ({ children, style = {}, classNames }: Props) => {
     return (
-        <div className="ticket">
+        <div className={`ticket ${classNames}`} style={{ ...style }}>
             {children}
         </div>
     )
