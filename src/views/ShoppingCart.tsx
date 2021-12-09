@@ -1,4 +1,5 @@
 import { usePassangers } from "../components/passangers/usePassangers"
+import { EmptyShopping } from "../components/Shopping/EmptyShopping"
 import { useLocalStorage } from "../hooks/useLocalStorage"
 import { FlightState } from "../redux/reducers/flightReducer"
 
@@ -14,7 +15,7 @@ export const ShoppingCart = () => {
         setItem(newFlights)
     }
 
-
+    if (item.length === 0) return <EmptyShopping />
 
     return (
         <div className="container" style={{ paddingBottom: 100 }}>
