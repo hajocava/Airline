@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router"
+import { useLocalStorage } from "../../hooks/useLocalStorage"
 import { FlightState } from "../../redux/reducers/flightReducer"
 import { MONTHS } from "../layout/datePicker/CustomLabels"
 import { usePassangers } from "../passangers/usePassangers"
@@ -7,8 +8,13 @@ import { usePassangers } from "../passangers/usePassangers"
 export const FlightResume = () => {
     const navigate = useNavigate()
     const { passangersToText } = usePassangers()
+    const { item, saveItem } = useLocalStorage('tickets', [])
     const { origin, destiny, passangers, date, seats, flight }: FlightState = useSelector((state: any) => state.flightReducer)
 
+    const saveReserve = () => {
+        saveItem([...item, { origin, destiny, passangers, date, seats, flight }])
+        navigate('/')
+    }
 
     return (
         <div className="container" style={{ paddingBottom: 80 }}>
@@ -59,7 +65,7 @@ export const FlightResume = () => {
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <button
                     className="btn primary mt-4" style={{ width: 180 }}
-                    onClick={() => { navigate('/') }}
+                    onClick={saveReserve}
                     children="Reservar"
                 />
             </div>

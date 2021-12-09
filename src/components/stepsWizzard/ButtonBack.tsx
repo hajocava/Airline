@@ -16,8 +16,12 @@ export const ButtonBack = ({ classNames, style }: Props) => {
                 className={`wizard-buttons-back ${classNames}`}
                 onClick={goPrevPage}
                 style={{
+                    cursor: 'pointer',
+                    padding: 10,
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    color: 'white',
                     ...style,
-                    cursor: 'pointer'
                 }}
             >
                 <i className="fas fa-chevron-left"></i>
