@@ -1,4 +1,6 @@
 import { useContext, useState } from "react"
+import { useSelector } from "react-redux"
+import { FlightState } from "../../redux/reducers/flightReducer"
 import { SeatContext } from "./SeatsContext"
 
 interface Props {
@@ -8,8 +10,10 @@ interface Props {
 
 export const Seat = ({ label, status }: Props) => {
     const limitPassangers = 2 // Change for context value limitPassangers form
+
+    const { seats }: FlightState = useSelector((state: any) => state.flightReducer)
     const { handleSelected, seatsSelected } = useContext(SeatContext)
-    const [selected, setSelected] = useState(false)
+    const [selected, setSelected] = useState(seats.includes(label))
 
     const onChange = () => {
         if (status !== 'busy') {

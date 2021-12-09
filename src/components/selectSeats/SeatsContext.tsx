@@ -1,4 +1,6 @@
 import { createContext, useState } from "react";
+import { useSelector } from "react-redux";
+import { FlightState } from "../../redux/reducers/flightReducer";
 
 type AuthContextProps = {
     seatsSelected: Array<string>;
@@ -8,7 +10,8 @@ type AuthContextProps = {
 export const SeatContext = createContext({} as AuthContextProps);
 
 export const SeatsContextProvider = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
-    const [seatsSelected, setSeatsSelected] = useState<Array<string>>([])
+    const { seats }: FlightState = useSelector((state: any) => state.flightReducer)
+    const [seatsSelected, setSeatsSelected] = useState<Array<string>>(seats)
 
     const handleSelected = (seat: string) => {
         if (!seatsSelected.includes(seat)) {

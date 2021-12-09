@@ -7,13 +7,13 @@ import { usePassangers } from "../passangers/usePassangers"
 export const FlightResume = () => {
     const navigate = useNavigate()
     const { passangersToText } = usePassangers()
-    const { origin, destiny, passangers, date, seats }: FlightState = useSelector((state: any) => state.flightReducer)
+    const { origin, destiny, passangers, date, seats, flight }: FlightState = useSelector((state: any) => state.flightReducer)
 
 
     return (
         <div className="container" style={{ paddingBottom: 80 }}>
             <h2 className="mb-0">Resumen</h2>
-            <p className="mt-1 mb-4">Revisa que todos los datos esten bien</p>
+            <p className="mt-1 mb-4">Revisa que los datos esten correctos</p>
             <div className="card-container">
                 <div className="field-value">
                     <label>Origen</label>
@@ -29,19 +29,31 @@ export const FlightResume = () => {
                 </div>
                 <div className="field-value">
                     <label>Hora de salida</label>
-                    <p>10:30 AM Hora Nueva York</p>
+                    <p>{flight?.originHour} - {origin}</p>
                 </div>
                 <div className="field-value">
                     <label>Hora de llegada</label>
-                    <p>16:40 PM Hora Francia</p>
+                    <p>{flight?.destinyHour} - {destiny}</p>
                 </div>
                 <div className="field-value">
                     <label>Pasajeros</label>
                     <p>{passangersToText(passangers)}</p>
                 </div>
                 <div className="field-value">
+                    <label>Vuelo</label>
+                    <p>{flight?.flight}</p>
+                </div>
+                <div className="field-value">
                     <label>Asientos</label>
                     <p>{seats.join(', ')}</p>
+                </div>
+                <div className="field-value">
+                    <label>Escalas</label>
+                    <p>{flight?.scales === 0 ? 'Sin escalas' : flight?.scales}</p>
+                </div>
+                <div className="field-value">
+                    <label>Precio</label>
+                    <p className="color-primary bold">${flight?.price}</p>
                 </div>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>

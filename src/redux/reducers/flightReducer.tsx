@@ -1,7 +1,8 @@
+import { FlightInterface } from "../../components/flights/Flight"
 import { PassangersInterface } from "../../components/passangers/usePassangers"
 
 
-export interface FlightState extends FormTrip, FlightID, Seats { }
+export interface FlightState extends FormTrip, Flight, Seats { }
 
 interface FormTrip {
     origin: string;
@@ -10,13 +11,15 @@ interface FormTrip {
     passangers: PassangersInterface;
 }
 
-interface FlightID { flightID: number | null; }
+interface Flight {
+    flight: FlightInterface | null
+}
 
 interface Seats { seats: Array<string>; }
 
 export type FlightAction =
     | { type: 'SET_FORM', payload: FormTrip }
-    | { type: 'SET_FLIGHT', payload: FlightID }
+    | { type: 'SET_FLIGHT', payload: Flight }
     | { type: 'SET_SEATS', payload: Seats }
 
 
@@ -29,11 +32,11 @@ const initialState: FlightState = {
         kids: 0,
         babies: 0
     },
-    flightID: null,
+    flight: null,
     seats: [],
 }
 
-export const flightReducer = (state: FlightState= initialState, action: FlightAction): FlightState => {
+export const flightReducer = (state: FlightState = initialState, action: FlightAction): FlightState => {
     switch (action.type) {
         case 'SET_FORM':
             return {
@@ -41,12 +44,15 @@ export const flightReducer = (state: FlightState= initialState, action: FlightAc
                 origin: action.payload.origin,
                 destiny: action.payload.destiny,
                 date: action.payload.date,
-                passangers: action.payload.passangers
+                passangers: action.payload.passangers,
+                flight: null,
+                seats: []
             }
         case 'SET_FLIGHT':
             return {
                 ...state,
-                flightID: action.payload.flightID
+                flight: action.payload.flight,
+                seats: []
             }
         case 'SET_SEATS':
             return {

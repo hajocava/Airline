@@ -9,7 +9,7 @@ import * as Yup from "yup";
 
 const DESTINATIONS = [
     { value: 'Francia', label: 'Francia' },
-    { value: 'Italia', label: 'Brasil' },
+    { value: 'Brasil', label: 'Brasil' },
     { value: 'Egipto', label: 'Egipto' },
     { value: 'Nueva York', label: 'Nueva York' },
     { value: 'Inglaterra', label: 'Inglaterra' },

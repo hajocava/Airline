@@ -6,7 +6,7 @@ interface Props {
     flight: FlightInterface
 }
 
-interface FlightInterface {
+export interface FlightInterface {
     id: number;
     origin: string;
     originShort: string;
@@ -24,16 +24,16 @@ export const Flight = ({ flight }: Props) => {
     const { goNextPage } = useWizardContext()
     const dispatch = useDispatch()
 
-    const selectTicket = (flightID: number) => {
+    const selectTicket = (flight: FlightInterface) => {
         dispatch({
             type: 'SET_FLIGHT',
-            payload: { flightID }
+            payload: { flight }
         })
         goNextPage()
     }
 
     return (
-        <div onClick={() => selectTicket(flight.id)}>
+        <div onClick={() => selectTicket(flight)}>
             <Ticket>
                 <Ticket.Header>
                     <div className="flight-header">
