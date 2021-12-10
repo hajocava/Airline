@@ -18,14 +18,15 @@ export const Home = () => {
 
     return (
         <Hero>
-            <div className='container mt-5'>
+            <div className='container mt-5' style={{ maxWidth: 400 }}>
                 <h1
                     children="¿Cuál será tu próxima aventura?"
                     style={{
                         color: 'white',
                         fontWeight: 'bold',
                         fontSize: 22,
-                        marginBottom: 25
+                        marginBottom: 25,
+                        textAlign: 'center'
                     }}
                 />
                 <FormSelectTrip trips={trips} />

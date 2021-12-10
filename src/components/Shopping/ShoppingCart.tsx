@@ -33,15 +33,17 @@ export const ShoppingCart = () => {
 
     return (
         <div className="container">
-            <h1 className="mb-0">Carrito</h1>
+            <h1 className="mb-4">Carrito</h1>
 
             <div className="shopping-container" style={{ paddingBottom: 100 }}>
                 <div className="shopping-total">
+                    <p className="m-0 bold" style={{ fontSize: 22 }}>{item.length} vuelo{item.length > 1 && 's'} reservado{item.length > 1 && 's'}</p>
                     <p className="mt-1">Total: <span style={{ fontSize: 22 }} className="color-primary bold">${calcTotal()} MXN</span></p>
-                    <ModalFinalizePurchase />
+                    <div className="mb-5">
+                        <ModalFinalizePurchase />
+                    </div>
                 </div>
                 <div className="shopping-list">
-                    <p>{item.length} vuelo{item.length > 1 && 's'} reservado{item.length > 1 && 's'}</p>
                     {
                         item.map((value: FlightState, index) => {
                             const date = new Date(value.date!)

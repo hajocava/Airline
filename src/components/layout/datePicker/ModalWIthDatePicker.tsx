@@ -42,7 +42,6 @@ export const ModalWithDatePicker = ({ placeholder, onChange, minimumDate }: Prop
                                     selectedDate={selectedDate}
                                     setSelectedDate={setSelectedDate}
                                     setShow={setShow}
-                                    style={{ marginTop: 20 }}
                                 />
                             )}
                         />

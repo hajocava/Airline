@@ -18,7 +18,7 @@ export const Passengers = ({ onChange }: Props) => {
                 value={passangersToText(passangers)}
                 placeholder="Pasajeros"
             />
-            <Modal show={show} setShow={setShow} size='sm' showCloseButton={false}>
+            <Modal show={show} setShow={setShow} style={{ maxWidth: 400 }} showCloseButton={false}>
                 <div style={{ margin: '0 10px' }}>
                     <ModalHeader>
                         <h3>Pasajeros</h3>
