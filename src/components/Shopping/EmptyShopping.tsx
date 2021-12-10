@@ -1,6 +1,12 @@
+import { CSSProperties } from "react"
 import { useNavigate } from "react-router-dom"
 
-export const EmptyShopping = () => {
+interface Props {
+    text: string;
+    style?: CSSProperties
+}
+
+export const EmptyShopping = ({ text, style = {} }: Props) => {
     const navigate = useNavigate()
 
     return (
@@ -10,7 +16,7 @@ export const EmptyShopping = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                height: '100vh',
+                ...style
             }}
         >
             <div>
@@ -20,7 +26,7 @@ export const EmptyShopping = () => {
                         fontSize: 64
                     }}
                 />
-                <h1 className="m-0 mt-4">Tu carrito esta vacio!</h1>
+                <h1 className="m-0 mt-4">{text}</h1>
                 <p className="m-0">Comienza a explorar nuevos destinos</p>
                 <button
                     className="btn primary mt-5"

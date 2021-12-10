@@ -29,7 +29,7 @@ export const ShoppingCart = () => {
         return total
     }
 
-    if (item.length === 0) return <EmptyShopping />
+    if (item.length === 0) return <EmptyShopping text="Tu carrito esta vacio!" style={{marginTop: 100}} />
 
     return (
         <div className="container">

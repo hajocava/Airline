@@ -3,6 +3,7 @@ import { FlightState } from "../../redux/reducers/flightReducer"
 import { FlightDuration } from "../flights/Flight"
 import { MONTHS } from "../layout/datePicker/CustomLabels"
 import { usePassangers } from "../passangers/usePassangers"
+import { EmptyShopping } from "../Shopping/EmptyShopping"
 import { Ticket } from "../ticket/Ticket"
 import "./styles.sass"
 
@@ -10,8 +11,11 @@ export const PurchasesList = () => {
     const { item } = useLocalStorage('purchases', [])
     const { passangersToText } = usePassangers()
 
+    if (item.length === 0) return <EmptyShopping text="Realiza una compra" style={{ marginTop: 100 }} />
+
     return (
         <div>
+            <h1>Mis boletos</h1>
             {
                 item.map((value: FlightState, index) => {
                     const date = new Date(value.date!)
