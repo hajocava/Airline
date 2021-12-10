@@ -1,3 +1,4 @@
+import React from 'react'; // Jest need React reference
 import { useDispatch } from "react-redux"
 import { useWizardContext } from "../stepsWizzard/WizardContext"
 import { Ticket } from "../ticket/Ticket"
@@ -28,7 +29,7 @@ export const FlightDuration = ({ duration }: { duration: string }) => {
                 <i className="fas fa-plane"></i>
                 <span className="line" />
             </div>
-            <p>{duration}</p>
+            <p className='duration'>{duration}</p>
         </div>
     )
 }
