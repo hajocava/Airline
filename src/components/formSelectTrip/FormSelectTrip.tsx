@@ -1,5 +1,5 @@
 import Select from 'react-select'
-import { DatePicker } from '../layout/datePicker/DatePicker'
+import { ModalWithDatePicker } from '../layout/datePicker/ModalWIthDatePicker'
 import { useFormik } from 'formik';
 import { Passengers } from '../passangers/Passengers';
 import { useNavigate } from 'react-router';
@@ -19,7 +19,7 @@ const DESTINATIONS = [
     { value: 'India', label: 'India' },
 ]
 
-const requiredFieldMessage = "Este campo es obligatorio"
+export const requiredFieldMessage = "Este campo es obligatorio"
 
 export const FormSelectTrip = () => {
     const navigate = useNavigate()
@@ -51,6 +51,8 @@ export const FormSelectTrip = () => {
         },
     });
 
+    const today = new Date()
+
     return (
         <div className="card-container">
             <form onSubmit={formik.handleSubmit}>
@@ -75,13 +77,23 @@ export const FormSelectTrip = () => {
                     <FormikFieldError formik={formik} fieldName="passangers" />
                 </div>
                 <div className="form-control">
-                    <DatePicker
+                    <ModalWithDatePicker
                         placeholder="Fecha de salida"
                         onChange={(value) => formik.setFieldValue('date', value)}
+                        minimumDate={{ 
+                            day: today.getDate(),
+                            month: today.getMonth() + 1,
+                            year: today.getFullYear()
+                        }}
                     />
                     <FormikFieldError formik={formik} fieldName="date" />
                 </div>
-                <button disabled={!(formik.isValid && formik.dirty)} type="submit" className="btn primary w-100 mt-3">Continuar</button>
+                <button
+                    disabled={!(formik.isValid && formik.dirty)}
+                    type="submit"
+                    className="btn primary w-100 mt-3"
+                    children="Continuar"
+                />
             </form>
         </div>
     )

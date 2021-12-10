@@ -1,44 +1,54 @@
+import { CSSProperties } from 'react'
 import './styles.sass'
 
-interface Props extends JSXProp {
+interface Props extends JSXProp, ClassNames {
     size?: 'sm' | 'md' | 'lg' | 'xl'
-    showCloseButton: boolean;
+    showCloseButton?: boolean;
     show: boolean;
     setShow: (show: boolean) => void;
+    style?: CSSProperties;
 }
 
-interface JSXProp {
+interface JSXProp extends StyleProp, ClassNames {
     children: JSX.Element[] | JSX.Element
 }
 
-export const ModalHeader = ({ children }: JSXProp) => {
+interface StyleProp {
+    style?: CSSProperties;
+}
+
+interface ClassNames {
+    classNames?: string
+}
+
+export const ModalHeader = ({ children, style = {}, classNames }: JSXProp) => {
     return (
-        <div className="modal-header">
+        <div className={`modal-header ${classNames}`} style={{ ...style }}>
             {children}
         </div>
     )
 }
 
-export const ModalBody = ({ children }: JSXProp) => {
+export const ModalBody = ({ children, style = {}, classNames }: JSXProp) => {
     return (
-        <div className="modal-body">
+        <div className={`modal-body ${classNames}`} style={{ ...style }}>
             {children}
         </div>
     )
 }
 
-export const ModalFooter = ({ children }: JSXProp) => {
+export const ModalFooter = ({ children, style = {}, classNames }: JSXProp) => {
     return (
-        <div className="modal-footer">
+        <div className={`modal-footer ${classNames}`} style={{ ...style }}>
             {children}
         </div>
     )
 }
 
-export const Modal = ({ children, show, setShow, showCloseButton, size='md' }: Props) => {
+export const Modal = ({ children, show, setShow, showCloseButton = true, size = 'md', style = {}, classNames }: Props) => {
     return (
         <div className='modal' style={{ display: show ? 'block' : 'none' }}>
-            <div className={`modal-content ${size}`}>
+            <div className={`modal-content ${size} ${classNames}`} style={{ ...style }}>
                 {
                     showCloseButton && (
                         <span className="close" onClick={() => setShow(false)}>

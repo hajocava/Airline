@@ -4,6 +4,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage"
 import { FlightState } from "../../redux/reducers/flightReducer"
 import { Ticket } from "../ticket/Ticket"
 import { FlightDuration } from "../flights/Flight"
+import { ModalFinalizePurchase } from "./ModalFinalizePurchase"
 
 export const ShoppingCart = () => {
     const { saveItem } = useLocalStorage('tickets', [])
@@ -12,7 +13,7 @@ export const ShoppingCart = () => {
 
     const deleteFlightFromLocalStorage = (id: number) => {
         const newFlights = item.filter((element: FlightState) => element.flight!.id !== id)
-
+        
         saveItem(newFlights)
         setItem(newFlights)
     }
@@ -33,7 +34,7 @@ export const ShoppingCart = () => {
             <div>
                 <h1 className="mb-0">Carrito</h1>
                 <p className="mt-1">Total: <span style={{ fontSize: 22 }} className="color-primary bold">${calcTotal()} MXN</span></p>
-                <button className="btn primary w-100">Pagar</button>
+                <ModalFinalizePurchase />
             </div>
             <p className="mt-5">{item.length} vuelos reservados</p>
             <div className="mt-2">

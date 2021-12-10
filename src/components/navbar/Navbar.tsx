@@ -3,6 +3,7 @@ import './styles.sass'
 
 export const Navbar = () => {
     const location = useLocation()
+
     return (
         <nav className='navbar'>
             <div className="icons-container">
@@ -13,15 +14,15 @@ export const Navbar = () => {
                     to="/"
                     className={({ isActive }) => (
                         isActive || location.pathname === '/vuelos'
-                        ? 'active' : 'inactive'
+                            ? 'active' : 'inactive'
                     )}
                 >
-                <i className="fas fa-compass"></i>
-            </NavLink>
-            <NavLink to="/carrito">
-                <i className="fas fa-shopping-cart"></i>
-            </NavLink>
-        </div>
+                    <i className="fas fa-compass"></i>
+                </NavLink>
+                <NavLink to="/carrito">
+                    <i className="fas fa-shopping-cart"></i>
+                </NavLink>
+            </div>
         </nav >
     )
 }

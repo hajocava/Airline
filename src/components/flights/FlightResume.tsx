@@ -32,7 +32,7 @@ export const FlightResume = () => {
             <button
                 className="btn primary w-100"
                 onClick={saveReserve}
-                children="Reservar"
+                children="Agregar al carrito"
             />
         </div>
     )

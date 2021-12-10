@@ -23,7 +23,7 @@ export const Passengers = ({ onChange }: Props) => {
                     <ModalHeader>
                         <h3>Pasajeros</h3>
                     </ModalHeader>
-                    <ModalBody>
+                    <ModalBody style={{ padding: 0 }}>
                         <Passanger
                             type='adults'
                             label='Adultos'
@@ -53,7 +53,8 @@ export const Passengers = ({ onChange }: Props) => {
                         <div style={{
                             display: 'flex',
                             justifyContent: 'space-between',
-                            marginBottom: 20
+                            marginBottom: 20,
+                            marginTop: 10
                         }}>
                             <button
                                 type="button"

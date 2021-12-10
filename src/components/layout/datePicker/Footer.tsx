@@ -1,3 +1,4 @@
+import { CSSProperties } from "react"
 import { DateObject } from "./date.interface"
 
 interface Props {
@@ -5,14 +6,16 @@ interface Props {
     selectedDate: any
     setSelectedDate: (value: any) => void;
     onChange: (date: Date) => void;
+    style?: CSSProperties;
 }
 
-export const Footer = ({ onChange, selectedDate, setShow, setSelectedDate }: Props) => {
+export const Footer = ({ onChange, selectedDate, setShow, setSelectedDate, style = {} }: Props) => {
     return (
         <div style={{
             display: 'flex',
             justifyContent: 'space-between',
-            margin: '0 20px 20px'
+            margin: '0 20px 20px',
+            ...style
         }}>
             <button
                 type="button"
