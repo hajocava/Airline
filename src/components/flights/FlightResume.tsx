@@ -5,6 +5,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage"
 import { FlightState } from "../../redux/reducers/flightReducer"
 import { MONTHS } from "../layout/datePicker/CustomLabels"
 import { usePassangers } from "../passangers/usePassangers"
+import { toast } from '../layout/Swal';
 
 export const FlightResume = () => {
     const navigate = useNavigate()
@@ -12,7 +13,7 @@ export const FlightResume = () => {
     const { item, saveItem } = useLocalStorage('tickets', [])
     const { origin, destiny, passangers, date, seats, flight }: FlightState = useSelector((state: any) => state.flightReducer)
 
-    const saveReserve = () => {
+    const save = () => {
         saveItem([...item, {
             origin,
             destiny,
@@ -24,6 +25,7 @@ export const FlightResume = () => {
                 id: uniqid()
             }
         }])
+        toast('Agregado al carrito')
         navigate('/')
     }
 
@@ -31,7 +33,7 @@ export const FlightResume = () => {
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             <button
                 className="btn primary w-100"
-                onClick={saveReserve}
+                onClick={save}
                 children="Agregar al carrito"
             />
         </div>
