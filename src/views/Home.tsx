@@ -1,7 +1,21 @@
 import { FormSelectTrip } from "../components/formSelectTrip/FormSelectTrip"
 import { Hero } from "../components/hero/Hero"
+import axios from "axios"
+import { useEffect, useState } from "react"
+import { TripsState } from "../redux/reducers/tripsReducer"
 
 export const Home = () => {
+    const [trips, setTrips] = useState<any>([])
+
+    const getTrips = async () => {
+        const res = await axios.get<TripsState>('https://38c3929c-b76b-49b1-a10c-ea8ccd3eaab3.mock.pstmn.io/trips')
+        setTrips(res.data.trips)
+    }
+
+    useEffect(() => {
+        getTrips()
+    }, [])
+
     return (
         <Hero>
             <div className='container mt-5'>
@@ -13,7 +27,7 @@ export const Home = () => {
                         fontSize: 22
                     }}
                 />
-                <FormSelectTrip />
+                <FormSelectTrip trips={trips} />
             </div>
         </Hero>
     )

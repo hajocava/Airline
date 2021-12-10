@@ -5,23 +5,17 @@ import { Passengers } from '../passangers/Passengers';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { FormikFieldError } from '../layout/FormikFieldError';
+import { Trip } from '../../redux/reducers/tripsReducer';
 import * as Yup from "yup";
 
-const DESTINATIONS = [
-    { value: 'Francia', label: 'Francia' },
-    { value: 'Brasil', label: 'Brasil' },
-    { value: 'Egipto', label: 'Egipto' },
-    { value: 'Nueva York', label: 'Nueva York' },
-    { value: 'Inglaterra', label: 'Inglaterra' },
-    { value: 'Alemania', label: 'Alemania' },
-    { value: 'México', label: 'México' },
-    { value: 'Roma', label: 'Roma' },
-    { value: 'India', label: 'India' },
-]
+
+export interface Props {
+    trips: Array<Trip>;
+}
 
 export const requiredFieldMessage = "Este campo es obligatorio"
 
-export const FormSelectTrip = () => {
+export const FormSelectTrip = ({ trips }: Props) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -59,7 +53,7 @@ export const FormSelectTrip = () => {
                 <div className="form-control">
                     <Select
                         placeholder='Origen'
-                        options={DESTINATIONS}
+                        options={trips}
                         onChange={(value) => formik.setFieldValue('origin', value?.value)}
                     />
                     <FormikFieldError formik={formik} fieldName="origin" />
@@ -67,7 +61,7 @@ export const FormSelectTrip = () => {
                 <div className="form-control">
                     <Select
                         placeholder='Destino'
-                        options={DESTINATIONS}
+                        options={trips}
                         onChange={(value) => formik.setFieldValue('destiny', value?.value)}
                     />
                     <FormikFieldError formik={formik} fieldName="destiny" />
@@ -80,7 +74,7 @@ export const FormSelectTrip = () => {
                     <ModalWithDatePicker
                         placeholder="Fecha de salida"
                         onChange={(value) => formik.setFieldValue('date', value)}
-                        minimumDate={{ 
+                        minimumDate={{
                             day: today.getDate(),
                             month: today.getMonth() + 1,
                             year: today.getFullYear()

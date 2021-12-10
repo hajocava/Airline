@@ -15,4 +15,4 @@ export const Router = () => (
         </Routes>
         <Navbar />
     </BrowserRouter>
-);
+)
