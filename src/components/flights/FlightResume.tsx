@@ -41,10 +41,10 @@ export const FlightResume = () => {
         <div className="container" style={{ paddingBottom: 80 }}>
             <h2 className="mb-0">Resumen</h2>
             <p className="mt-1 mb-4">Revisa que los datos esten correctos</p>
-            <div className='mt-0 mb-5 w-100'>
+            <div className='mt-0 mb-4 w-100'>
                 <ButtonReserve />
             </div>
-            <div className="card-container">
+            <div className="card-container flight-resume-container">
                 <div className="field-value">
                     <label>Origen</label>
                     <p>{origin}</p>
@@ -85,9 +85,6 @@ export const FlightResume = () => {
                     <label>Precio</label>
                     <p className="color-primary bold">${flight?.price}</p>
                 </div>
-            </div>
-            <div className='mt-5 mb-5'>
-                <ButtonReserve />
             </div>
         </div>
     )

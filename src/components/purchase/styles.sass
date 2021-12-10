@@ -1,0 +1,14 @@
+@import '../../sass/vars.sass'
+@import '../../sass/mixins.sass'
+@import '../../sass/global.sass'
+
+.purchase-tickets-container
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    grid-template-rows: repeat(3, 1fr)
+    grid-column-gap: 0px
+    grid-row-gap: 0px
+
+    @include medium
+        grid-template-columns: repeat(3, 1fr)
+        grid-template-rows: repeat(2, 1fr)

@@ -2,21 +2,41 @@
 @import '../../sass/mixins.sass'
 @import '../../sass/global.sass'
 
+.shopping-container
+    display: grid
+    grid-template-columns: repeat(1, 1fr)
+    grid-template-rows: repeat(1, 1fr)
+    grid-column-gap: 0px
+    grid-row-gap: 0px
+
+    @include medium
+        grid-template-columns: repeat(2, 1fr)
+        grid-template-rows: repeat(1, 1fr)
+        grid-column-gap: 100px
+        
+        .shopping-total
+            grid-column: 2
+            grid-row: 1
+
+        .shopping-list
+            grid-column: 1
+            grid-row: 1
+
 .credit-card
     // gradient
-    background: rgba(230,117,166,1);
-    background: -moz-linear-gradient(-45deg, rgba(230,117,166,1) 0%, rgba(178,37,98,1) 100%);
-    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(230,117,166,1)), color-stop(100%, rgba(178,37,98,1)));
-    background: -webkit-linear-gradient(-45deg, rgba(230,117,166,1) 0%, rgba(178,37,98,1) 100%);
-    background: -o-linear-gradient(-45deg, rgba(230,117,166,1) 0%, rgba(178,37,98,1) 100%);
-    background: -ms-linear-gradient(-45deg, rgba(230,117,166,1) 0%, rgba(178,37,98,1) 100%);
-    background: linear-gradient(135deg, rgba(230,117,166,1) 0%, rgba(178,37,98,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e675a6', endColorstr='#b22562', GradientType=1 );
+    background: rgba(230,117,166,1)
+    background: -moz-linear-gradient(-45deg, rgba(230,117,166,1) 0%, rgba(178,37,98,1) 100%)
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(230,117,166,1)), color-stop(100%, rgba(178,37,98,1)))
+    background: -webkit-linear-gradient(-45deg, rgba(230,117,166,1) 0%, rgba(178,37,98,1) 100%)
+    background: -o-linear-gradient(-45deg, rgba(230,117,166,1) 0%, rgba(178,37,98,1) 100%)
+    background: -ms-linear-gradient(-45deg, rgba(230,117,166,1) 0%, rgba(178,37,98,1) 100%)
+    background: linear-gradient(135deg, rgba(230,117,166,1) 0%, rgba(178,37,98,1) 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e675a6', endColorstr='#b22562', GradientType=1 )
 
     // shadow
-    -webkit-box-shadow: 0px 10px 30px 0px rgba(178,37,98,0.83);
-    -moz-box-shadow: 0px 10px 30px 0px rgba(178,37,98,0.83);
-    box-shadow: 0px 10px 30px 0px rgba(178,37,98,0.83);
+    -webkit-box-shadow: 0px 10px 30px 0px rgba(178,37,98,0.83)
+    -moz-box-shadow: 0px 10px 30px 0px rgba(178,37,98,0.83)
+    box-shadow: 0px 10px 30px 0px rgba(178,37,98,0.83)
 
     height: 200px
     border-radius: 20px
@@ -29,8 +49,10 @@
         margin: 25px 20px 0
 
     .numbers
+        display: block
         color: white
         padding: 20px 25px
+        opacity: 1
 
         p
             margin: 5px 0
@@ -42,3 +64,10 @@
         div
             display: flex
             justify-content: space-between
+
+.shopping-cart-container
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    grid-template-rows: repeat(2, 1fr)
+    grid-column-gap: 0px
+    grid-row-gap: 0px

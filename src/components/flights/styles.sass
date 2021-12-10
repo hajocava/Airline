@@ -32,7 +32,7 @@
     padding: 0 20px
     max-width: 300px
     text-align: center
-    
+
     p
         font-size: 14px
 
@@ -76,3 +76,18 @@
         transform: translateX(-50%)
         color: white
         font-weight: bold
+
+.flight-resume-container
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    grid-template-rows: repeat(5, 1fr)
+    grid-column-gap: 0px
+    grid-row-gap: 0px
+
+    @include medium
+        grid-template-columns: repeat(4, 1fr)
+        grid-template-rows: repeat(3, 1fr)
+
+    @include extra
+        grid-template-columns: repeat(5, 1fr)
+        grid-template-rows: repeat(2, 1fr)

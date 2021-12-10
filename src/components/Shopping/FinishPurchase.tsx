@@ -7,7 +7,8 @@ interface Props {
 }
 
 export const FinishPurchase = ({ setComplete }: Props) => {
-    const { saveItem } = useLocalStorage('tickets', [])
+    const { item: tickets, saveItem: saveTickets } = useLocalStorage('tickets', [])
+    const { item: purchases, saveItem: savePurchases } = useLocalStorage('purchases', [])
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -22,7 +23,8 @@ export const FinishPurchase = ({ setComplete }: Props) => {
                 children="Cerrar"
                 className="btn primary mt-4"
                 onClick={() => {
-                    saveItem([])
+                    savePurchases(tickets.concat(purchases))
+                    saveTickets([]) // remove all tickets in localStorage
                     navigate('/')
                 }}
             />
