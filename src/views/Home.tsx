@@ -24,7 +24,8 @@ export const Home = () => {
                     style={{
                         color: 'white',
                         fontWeight: 'bold',
-                        fontSize: 22
+                        fontSize: 22,
+                        marginBottom: 25
                     }}
                 />
                 <FormSelectTrip trips={trips} />
