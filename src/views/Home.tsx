@@ -18,7 +18,7 @@ export const Home = () => {
 
     return (
         <Hero>
-            <div className='container mt-5' style={{ maxWidth: 400 }}>
+            <div className='container md mt-5'>
                 <h1
                     children="¿Cuál será tu próxima aventura?"
                     style={{
