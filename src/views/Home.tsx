@@ -29,7 +29,11 @@ export const Home = () => {
                         textAlign: 'center'
                     }}
                 />
-                <FormSelectTrip trips={trips} />
+                <div style={{  display: 'flex', justifyContent: 'center' }}>
+                    <div style={{ width: '100%', maxWidth: 400 }}>
+                        <FormSelectTrip trips={trips} />
+                    </div>
+                </div>
             </div>
         </Hero>
     )
